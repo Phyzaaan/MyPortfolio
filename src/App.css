@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #F0F8FF;   
+  --secondary-color: #A6C8FF; 
+  --card-1: #4D74D4;        
+  --card-2: #B4D6FF;      
+  --btn-color: #6A8EEE;    
+  --input-color: #D6E6FF;     
+  --text-color: #0B2447;       
+  --text-color-2: #5f38fa; 
+  --border-color: #0B2447;    
+  --shadow: #0B244766; 
+  transition: all 0.7s ease-in-out;    
+}
+
+
+.dark-theme {
+  --primary-color: #071326;    
+  --secondary-color: #1A2B47;  
+  --card-1: #00A7C4;
+  --card-2: #3c8b9d;       
+  --btn-color: #00BFFF;     
+  --input-color: #10223F; 
+  --text-color: #EAF6FF;       
+  --text-color-2: #67E8F9;
+  --border-color: #EAF6FF;
+  --shadow: #EAF6FF99;    
+}
+
+.broken {
+  --primary-color: #1A051A;    /* Very dark, almost black, for a somber base */
+  --secondary-color: #331A33;  /* Dark muted purple-gray for secondary elements */
+  --card-1: #8A0000;          /* Deep, broken-heart red for main cards */
+  --card-2: #5C0000;          /* Slightly darker red for card accents */
+  --btn-color: #CC6699;        /* Muted, bruised pink for interactive elements */
+  --input-color: #2F0A2F;      /* Dark, subtle purple for input fields */
+  --text-color: #F0E0F0;       /* Off-white/pale lavender for main text */
+  --text-color-2: #A37F9E;     /* Muted dusty rose for secondary text */
+  --border-color: #4D264D;     /* Dark desaturated purple for borders */
+  --shadow: #8A00004D;        /* A subtle, melancholic red shadow */
+}
+
+.paid-font {
+  font-family: "Gabriela", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--text-color);
+
+  scrollbar-width: thin;
+  /* Colors are [thumb] [track] */
+  scrollbar-color: var(--border-color) #e6000000;
+  scroll-behavior: smooth;
+  transition: all 0.7s ease-in-out;
+}
+
+/* Sun and Moon animation classes */
+.sun {
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  border-radius: 9999px;
+  box-shadow: 0 0 60px 10px #fde04788;
+  width: 80px;
+  height: 80px;
+  background: #fde047;
+  opacity: 1;
+  transform: scale(1);
+  z-index : 30;
+  transition: all 0.7s ease-in-out;
+}
+.sun.hide {
+  opacity: 0;
+  transform: scale(0);
+  transform:translateX(225px);
+}
+
+.moon {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  border-radius: 9999px;
+  box-shadow: 0 0 40px 5px #f1f5f9aa;
+  width: 70px;
+  height: 70px;
+  background: #f1f5f9;
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  z-index: 30;
+  transition: all 0.7s ease-in-out;
+}
+.moon.hide {
+  opacity: 0;
+  transform: scale(0) rotate(0deg);
+  transform:translateX(-225px);
+}
+
+.wave-bg {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%233b82f6' fill-opacity='0.7' d='M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,181.3C672,171,768,181,864,197.3C960,213,1056,235,1152,218.7C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3e%3c/path%3e%3c/svg%3e");
+  background-size: cover;
+  animation: wave 25s linear infinite;
+  z-index: 1;
+}
+
+.wave-bg-2 {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%2360a5fa' fill-opacity='0.6' d='M0,224L48,208C96,192,192,160,288,160C384,160,480,192,576,202.7C672,213,768,203,864,186.7C960,171,1056,149,1152,154.7C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3e%3c/path%3e%3c/svg%3e");
+  background-size: cover;
+  animation: wave 20s linear infinite reverse;
+  z-index: 0;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-45%); }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+      opacity: 1;
+      scale: 2;
+  }
+  50% {
+      opacity: 0.5;
+      scale: 1;
+  }
+}
+
+@keyframes cloud-flow {
+    0%   { transform: translateX(130vw); } /* Start just off-screen right */
+    100% { transform: translateX(-20vw); }  /* End far off-screen left */
+}
+
+
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out;
+}
+
+@keyframes explode {
+    0% { transform: scale(1) rotate(0); opacity: 1; }
+    100% { transform: scale(1.5) rotate(15deg); opacity: 0; }
+}
+
+.animate-explode {
+    animation: explode 0.5s ease-out forwards;
+}
