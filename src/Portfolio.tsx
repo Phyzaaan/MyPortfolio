@@ -41,7 +41,7 @@ const Portfolio: React.FC = () => {
 
   const openWindow = (id: WindowId) => {
     setWindows(prev => {
-      return {...prev, [id]: true };
+      return { ...prev, [id]: true };
     });
     setShowCloseBtn(true);
     setHeaderTitle(id);
@@ -49,14 +49,14 @@ const Portfolio: React.FC = () => {
 
   const closeWindow = () => {
     setWindows({
-        About: false,
-        Work: false,
-        Contact: false,
-        Comments: false,
-        Credits: false,
+      About: false,
+      Work: false,
+      Contact: false,
+      Comments: false,
+      Credits: false,
     });
     setShowCloseBtn(false);
-    setHeaderTitle('Home'); 
+    setHeaderTitle('Home');
     playSound('/Sounds/pop1.mp3', { isEnabled: volume });
   };
 
@@ -68,7 +68,6 @@ const Portfolio: React.FC = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const pageTitles = ['Welcome', 'Home'];
     const handleScroll = () => {
-      playSound('/Sounds/trans.mp3', { isEnabled: volume, speed: 1.5, time: 0.5 });
       const container = scrollContainerRef.current;
       if (container) {
         const pageHeight = container.clientHeight; // Height of one page
@@ -78,6 +77,7 @@ const Portfolio: React.FC = () => {
         const newTitle = pageTitles[currentPageIndex] || pageTitles[pageTitles.length - 1];
 
         if (headerTitle !== newTitle) {
+          playSound('/Sounds/trans.mp3', { isEnabled: volume, speed: 1.5, time: 0.5 });
           setHeaderTitle(newTitle);
         }
       }
@@ -106,7 +106,7 @@ const Portfolio: React.FC = () => {
     } else {
       setVolume(false);
       document.documentElement.classList.remove('paid-font');
-    } 
+    }
   }, [paid, darkMode, broken]);
 
   // Hnandle subscription action
@@ -128,7 +128,7 @@ const Portfolio: React.FC = () => {
 
 
         {/* Main content */}
-        <main className={`relative w-[80%] min-w-[350px] max-w-5xl h-[65vh] min-h-[350px] max-h-[900px] overflow-hidden flex flex-col backdrop-blur-sm border-3 border-[var(--border-color)] mx-auto ${paid ? 'rounded-2xl shadow-[2px_3px_5px_0_var(--shadow)] transition-all duration-700 ease-in-out' : 'bg-white'} ${ broken ? 'bg-[var(--primary-color)]' : ''}`}>
+        <main className={`relative w-[80%] min-w-[350px] max-w-5xl h-[65vh] min-h-[350px] max-h-[900px] overflow-hidden flex flex-col backdrop-blur-sm border-3 border-[var(--border-color)] mx-auto ${paid ? 'rounded-2xl shadow-[2px_3px_5px_0_var(--shadow)] transition-all duration-700 ease-in-out' : 'bg-white'} ${broken ? 'bg-[var(--primary-color)]' : ''}`}>
           <Header
             title={headerTitle}
             paid={paid}
@@ -156,36 +156,36 @@ const Portfolio: React.FC = () => {
             />
           </section>
 
-            {/* About Me */}
-            <AboutMe
-              isVisible={windows.About}
-              volume={volume}
-              openWindow={openWindow}
-            />
+          {/* About Me */}
+          <AboutMe
+            isVisible={windows.About}
+            volume={volume}
+            openWindow={openWindow}
+          />
 
-            {/* Work */}
-            <Work
-              isVisible={windows.Work}
-              volume={volume}
+          {/* Work */}
+          <Work
+            isVisible={windows.Work}
+            volume={volume}
 
-            />
+          />
 
-            <Contact
-              isVisible={windows.Contact}
-              volume={volume}
-            />
+          <Contact
+            isVisible={windows.Contact}
+            volume={volume}
+          />
 
-            <Comments
-              isVisible={windows.Comments}
-              volume={volume}
-            />
+          <Comments
+            isVisible={windows.Comments}
+            volume={volume}
+          />
 
-            <Credits
-              isVisible={windows.Credits}
-              volume={volume}
-              bgMusic={bgMusic}
-              broken={() => setBroken(true)}
-            />
+          <Credits
+            isVisible={windows.Credits}
+            volume={volume}
+            bgMusic={bgMusic}
+            broken={() => setBroken(true)}
+          />
 
         </main>
       </Suspense>

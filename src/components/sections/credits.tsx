@@ -9,12 +9,12 @@ import emailJS from '/svgs/emailJS.webp';
 import firebase from '/svgs/firebase.webp';
 
 import HeartPopUp from "./MyHeart";
-import { playSound, stopAllSounds } from "../../utils/sound";
+import { playSound } from "../../utils/sound";
 
 interface Props {
     isVisible: boolean;
-    bgMusic: string;
     volume: boolean;
+    bgMusic: string; 
     broken: () => void;
 }
 
@@ -22,7 +22,7 @@ interface Props {
 
 
 
-const Credits: React.FC<Props> = ({ isVisible, bgMusic, volume, broken }) => {
+const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken }) => {
     const [showHeart, setShowHeart] = useState(false);
     const [hover, setHover] = useState('');
 
@@ -118,9 +118,8 @@ const Credits: React.FC<Props> = ({ isVisible, bgMusic, volume, broken }) => {
                 <div className="flex items-center gap-x-2 text-xl font-semibold italic transition-all duration-700 ease-in-out">
                     <span>Created with</span>
                     <Heart onClick={() => {
-                        stopAllSounds();
-                        playSound(bgMusic, { isEnabled: volume, time: 4 });
                         setShowHeart(true);
+                        playSound('/Sounds/paid.mp3', { isEnabled: volume });
                     }}
                         className="inline-block text-red-500 fill-red-500 transition-all duration-700 ease-in-out" size={20} />
                     <span>By yours truly</span>
@@ -134,6 +133,7 @@ const Credits: React.FC<Props> = ({ isVisible, bgMusic, volume, broken }) => {
                     playSound('/Sounds/pop1.mp3', { isEnabled: volume });
                 }}
                 volume={volume}
+                bgMusic={bgMusic}
                 setBroken={broken}
                 />
                 
