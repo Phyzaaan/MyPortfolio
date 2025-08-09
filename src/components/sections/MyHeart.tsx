@@ -28,6 +28,9 @@ const BrokenHeartIcon = () => (
   </svg>
 );
 
+import HeartHurtURL from '/Sounds/hurt.mp3';
+import HeartBreakURL from '/Sounds/heart-break.mp3';
+
 
 interface MyHeartProps {
   onClose: () => void;
@@ -50,13 +53,13 @@ const HeartPopUp: React.FC<MyHeartProps> = ({ onClose, isVisible, volume, bgMusi
     }
     setHits(hits + 1);
     if (hits < 3) {
-      playSound('/Sounds/hurt.mp3', { isEnabled: volume });
+      playSound(HeartHurtURL, { isEnabled: volume });
       setMessage("PLEASE STOP! It Hurts");
     } else {
       setBroken();
       setIsBroken(true);
       stopAllSounds();
-      playSound('/Sounds/heart-break.mp3', { isEnabled: volume });
+      playSound(HeartBreakURL, { isEnabled: volume });
       playSound(bgMusic, { isEnabled: volume, time: 4 });
       setMessage("You Broke My Heart...");
     }

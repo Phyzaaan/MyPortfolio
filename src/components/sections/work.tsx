@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import ProjectCard from "../ui/projectCards";
 import SkillBar from "../ui/skillBar";
@@ -41,14 +41,32 @@ const projects = [
 
 
 const Work: React.FC<Props> = ({ isVisible, volume }) => {
-  
-
     const [topCard, setTopCard] = useState('p3');
 
     function handleSetTop(topCard: string) {
         playSound('/Sounds/Hover.mp3', { isEnabled: volume })
         setTopCard(topCard);
     }
+
+    {/* Scroll logic */ }
+    const { scrollContainerRef, handleScroll } = useScrollTitle();
+    const [currentPageIndex, setCurrentPageIndex] = useState(0);
+
+    function useScrollTitle() {
+        const scrollContainerRef = useRef<HTMLDivElement>(null);
+        const handleScroll = () => {
+            const container = scrollContainerRef.current;
+            if (container) {
+                const pageHeight = container.clientHeight; // Height of one page
+                setCurrentPageIndex(Math.round(container.scrollTop / pageHeight));
+            }
+        };
+        return { scrollContainerRef, handleScroll };
+    }
+
+    useEffect(() => {
+        playSound('/Sounds/trans.mp3', { isEnabled: volume, speed: 1.5, time: 0.5 });
+    }, [currentPageIndex]);
 
 
     return (
@@ -58,7 +76,10 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
         >
 
             {/* --- WINDOW CONTENT --- */}
-            <div onScroll={() => playSound('/Sounds/trans.mp3', { isEnabled: volume, speed: 1.5, time: 0.5 })} className="p-4 flex-grow flex flex-col gap-y-3 overflow-y-auto snap-y snap-mandatory h-full">
+            <div ref={scrollContainerRef}
+                onScroll={handleScroll}
+                className="p-4 flex-grow flex flex-col gap-y-3 overflow-y-auto snap-y snap-mandatory h-full"
+            >
                 <div className="h-full w-full flex-shrink-0 snap-start p-5">
                     <h2 className="text-3xl font-bold text-[var(--text-color)] text-center transition-all duration-700 ease-in-out">
                         Here are some of my websites

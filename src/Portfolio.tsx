@@ -6,7 +6,7 @@ import { playSound } from './utils/sound';
 import Welcome from './components/sections/welcome';
 import Home from './components/sections/home';
 
-const AboutMe = React.lazy(() => import('./components/sections/aboutMe'))
+const AboutMe = React.lazy(() => import('./components/sections/aboutMe'));
 const Work = React.lazy(() => import('./components/sections/work'));
 const Contact = React.lazy(() => import('./components/sections/contact'));
 const Comments = React.lazy(() => import('./components/sections/comment'));
@@ -185,6 +185,7 @@ const Portfolio: React.FC = () => {
             volume={volume}
             bgMusic={bgMusic}
             broken={() => setBroken(true)}
+            fallback={<LoadingFallback />}
           />
 
         </main>

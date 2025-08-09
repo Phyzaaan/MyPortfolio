@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { Heart } from 'lucide-react';
 
 import vite from '/svgs/vite.svg';
@@ -8,21 +8,22 @@ import tailwindcss from '/svgs/tailwindcss.svg';
 import emailJS from '/svgs/emailJS.webp';
 import firebase from '/svgs/firebase.webp';
 
-import HeartPopUp from "./MyHeart";
+const HeartPopUp = React.lazy(() => import('./MyHeart'))
 import { playSound } from "../../utils/sound";
 
 interface Props {
     isVisible: boolean;
     volume: boolean;
-    bgMusic: string; 
+    bgMusic: string;
     broken: () => void;
+    fallback: React.ReactNode;
 }
 
 
 
 
 
-const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken }) => {
+const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback }) => {
     const [showHeart, setShowHeart] = useState(false);
     const [hover, setHover] = useState('');
 
@@ -126,17 +127,19 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken }) => {
                 </div>
             </div>
 
-            <HeartPopUp
-                isVisible={showHeart}
-                onClose={() => {
-                    setShowHeart(false)
-                    playSound('/Sounds/pop1.mp3', { isEnabled: volume });
-                }}
-                volume={volume}
-                bgMusic={bgMusic}
-                setBroken={broken}
+            <Suspense fallback={fallback}>
+                <HeartPopUp
+                    isVisible={showHeart}
+                    onClose={() => {
+                        setShowHeart(false)
+                        playSound('/Sounds/pop1.mp3', { isEnabled: volume });
+                    }}
+                    volume={volume}
+                    bgMusic={bgMusic}
+                    setBroken={broken}
                 />
-                
+            </Suspense>
+
         </section>
     );
 };
