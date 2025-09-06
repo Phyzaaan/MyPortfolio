@@ -23,21 +23,19 @@ const AboutMe: React.FC<Props> = ({ isVisible, volume, openWindow}) => {
       <div className="p-4 flex-grow flex flex-col gap-y-3 overflow-y-auto transition-all duration-700 ease-in-out">
         <div className="text-center pb-3 border-b-2 border-[var(--border-color)] transition-all duration-700 ease-in-out">
           <h2 className="text-4xl font-extrabold bg-clip-text text-transparent
-           bg-gradient-to-r from-indigo-600 to-pink-500 drop-shadow">FAIZAN SHAH</h2>
-          <p className="italic text-[var(--text-color-2)] transition-all duration-700 ease-in-out">A Ordinary Guy With Extraordinary Goals</p>
+           bg-gradient-to-r from-indigo-600 to-pink-500 drop-shadow">Phantom</h2>
+          <p className="italic text-[var(--text-color-2)] transition-all duration-700 ease-in-out">The ultimate ghost of the web.</p>
         </div>
 
-        <QnABlock title="What do I do?" content="I design and create websites." volume={volume} />
+        <QnABlock title="What do I do?" content="I haunt peoples in their dreams, besides that I design and develop websites." volume={volume} />
 
-        <QnABlock title="Why do I create Websites?" content=" Just for Fun. I don't plan to make it my profession." volume={volume} />
+        <QnABlock title="Why do I create Websites?" content="Making websites is like a dream, You can do whatever you can imagine." volume={volume} />
 
-        <QnABlock title="Why Web Development?" content="Because it's fun and I can create what ever I can imagine." volume={volume} />
+        <QnABlock title="Am I down for collaboration?" content="Yes, But it should be fun. You can send me a GhostMail." volume={volume} />
 
-        <QnABlock title="Am I down for collaboration?" content="Yes, But it should be fun. You can send me email." volume={volume} />
+        <QnABlock title="Am I scared of AI?" content="No, AI is scared of me Because I will take AI's job." volume={volume} />
 
-        <QnABlock title="Am I scred of AI?" content="No, I don't care About AI taking over my Work." volume={volume} />
-
-        <QnABlock title="Do I use AI?" content="A lot. AI can't do everything. I use AI to help me." volume={volume} />
+        <QnABlock title="Do I use AI?" content="A lot. AI is a slave of mine." volume={volume} />
 
         <p className="text-[var(--text-color)]/70 transition-all duration-700 ease-in-out">If you have any further questions, feel free to ask me in <button onClick={() => openWindow('Comments')} className="underline text-[var(--text-color-2)] pointer-click transition-all duration-700 ease-in-out">comments</button></p>
       </div>
