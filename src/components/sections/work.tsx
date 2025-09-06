@@ -11,7 +11,7 @@ interface Props {
 
 import askMeAnything from '/img/askMeAnything.webp';
 import surprise from '/img/surprise.webp';
-import keysArena from '/img/keysArena.webp';
+import MyCharacterGuide from '/img/MyCharGuide.webp';
 
 
 // Mock data for the project cards
@@ -31,11 +31,11 @@ const projects = [
         name: 'Ask Me Anything'
     },
     {
-        imageUrl: keysArena, // Placeholder image
-        webPath: 'https://0f4ovp.mimo.run/index.html',
+        imageUrl: MyCharacterGuide, // Placeholder image
+        webPath: 'https://my-character-guide.vercel.app/',
         title: 'A Fun Project',
         description: 'Built for fun, this is the most useless website that I have ever made.',
-        name: 'Keys Arena'
+        name: 'My Character Guide'
     }
 ];
 
