@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { playSound } from '../../utils/sound';
+import popInSound from '/Sounds/pop-in.mp3'
+import popOutSound from '/Sounds/pop-out.mp3'
 
 interface QnABlockProps {
   title: string;
@@ -22,9 +24,9 @@ const QnABlock: React.FC<QnABlockProps> = ({
         onClick={() => {
           setIsOpen(!isOpen); 
           if (isOpen) {
-          playSound('/Sounds/pop-in.mp3', { isEnabled: volume})
+          playSound(popInSound, { isEnabled: volume})
           } else {
-            playSound('/Sounds/pop-out.mp3', { isEnabled: volume})
+            playSound(popOutSound, { isEnabled: volume})
           }
       }}
         className="flex items-center justify-between w-full p-2 text-[var(--text-color-2)] hover:bg-[var(--secondary-color-2)] hover:text-[var(--text-color)] transition-all duration-700 ease-in-out"

@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 import { playSound } from "../../utils/sound";
+import btnPressSound from '/Sounds/btn-press.mp3'
+import paidSound from '/Sounds/paid.mp3'
 
 import emailjs from '@emailjs/browser';
 import Alert from '../ui/Alert'
@@ -39,7 +41,7 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
         if (!formRef.current) return;
 
         setIsSending(true);
-        playSound('/Sounds/btn-press.mp3', { isEnabled: volume })
+        playSound(btnPressSound, { isEnabled: volume })
 
         emailjs.sendForm(
             'service_4g77778',  // Service ID
@@ -47,7 +49,7 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
             formRef.current,
             '-AnaJnpfbDeUYlG_v'   // Public Key
         ).then(() => {
-            playSound('/Sounds/paid.mp3', { isEnabled: volume });
+            playSound(paidSound, { isEnabled: volume });
             setAlertMsg("Email sent successfully!");
             setShowAlert(true);
             formRef.current?.reset(); // Reset the form fields
@@ -61,17 +63,17 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
     };
 
 
-  
+
 
 
     return (
         <section
-            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] overflow-hidden flex flex-col transition-all duration-700 ease-in-out
+            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] flex flex-col transition-all duration-700 ease-in-out
             ${isVisible ? 'top-[60px]' : 'top-[600px]'}`}
         >
 
             {/* --- WINDOW CONTENT --- */}
-            <div className="p-4 flex-grow flex flex-col gap-y-3 overflow-y-auto transition-all duration-700 ease-in-out">
+            <div className="h-full w-full flex-shrink-0 snap-start p-5 mt-10 flex-grow flex flex-col gap-y-3 overflow-y-auto transition-all duration-700 ease-in-out">
                 {/* Inner form container */}
                 <form
                     ref={formRef}

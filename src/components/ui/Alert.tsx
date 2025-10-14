@@ -1,5 +1,6 @@
 import React from 'react';
-import { playSound } from '../../utils/sound'; // Make sure the path is right
+import { playSound } from '../../utils/sound'; 
+import btnPressSound from '/Sounds/btn-press.mp3';
 
 interface CustomAlertProps {
   isVisible: boolean;
@@ -12,7 +13,7 @@ const CustomAlert: React.FC<CustomAlertProps> = ({ isVisible, message, onClose, 
 
   const handleClose = () => {
     // Play a little 'close' sound to make it feel nice
-    playSound('/Sounds/btn-press.mp3', { isEnabled: volume });
+    playSound(btnPressSound, { isEnabled: volume });
     onClose();
   };
 

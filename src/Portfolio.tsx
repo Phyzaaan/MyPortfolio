@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef, Suspense } from 'react';
 import './App.css';
 
 import { playSound } from './utils/sound';
+import popSound from '/Sounds/pop.mp3';
+import transSound from '/Sounds/trans.mp3';
+import paidSound from '/Sounds/paid.mp3';
 
 import Welcome from './components/sections/welcome';
 import Home from './components/sections/home';
@@ -57,7 +60,7 @@ const Portfolio: React.FC = () => {
     });
     setShowCloseBtn(false);
     setHeaderTitle('Home');
-    playSound('/Sounds/pop1.mp3', { isEnabled: volume });
+    playSound(popSound, { isEnabled: volume });
   };
 
 
@@ -77,7 +80,7 @@ const Portfolio: React.FC = () => {
         const newTitle = pageTitles[currentPageIndex] || pageTitles[pageTitles.length - 1];
 
         if (headerTitle !== newTitle) {
-          playSound('/Sounds/trans.mp3', { isEnabled: volume, speed: 1.5, time: 0.5 });
+          playSound(transSound, { isEnabled: volume, speed: 1.5, time: 0.5 });
           setHeaderTitle(newTitle);
         }
       }
@@ -111,7 +114,7 @@ const Portfolio: React.FC = () => {
 
   // Hnandle subscription action
   const handleSubscribe = () => {
-    playSound('/Sounds/paid.mp3', { isEnabled: volume })
+    playSound(paidSound, { isEnabled: volume })
     setPaid(true);
     setShowSubModal(false);
   };

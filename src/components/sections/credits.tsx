@@ -10,6 +10,9 @@ import firebase from '/svgs/firebase.webp';
 
 const HeartPopUp = React.lazy(() => import('./MyHeart'))
 import { playSound } from "../../utils/sound";
+import popSound from '/Sounds/pop1.mp3';
+import paidSound from '/Sounds/paid.mp3';
+import hoverSound from '/Sounds/Hover.mp3';
 
 interface Props {
     isVisible: boolean;
@@ -25,21 +28,12 @@ interface Props {
 
 const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback }) => {
     const [showHeart, setShowHeart] = useState(false);
-    const [hover, setHover] = useState('');
-
-    // Add this helper inside your component:
-    function handleLogoHover(logo: string, soundPath: string, speed: number) {
-        setHover(logo);
-        playSound(soundPath, { isEnabled: volume, speed });
-    }
 
 
-
-
-    const logoIcon = `h-10 w-10 translate-y-2 group-hover:scale-120 group-hover:translate-y-0 transition-all duration-300 ease-in-out`;
+    const logoIcon = `h-10 w-10 translate-y-1 group-hover:scale-120 group-hover:translate-y-0 transition-all duration-300 ease-in-out`;
     const logoName = `text-sm text-[var(--text-color)]/70 opacity-0 scale-80 -translate-y-2 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-1 transition-all duration-300 ease-in-out`;
-    const iconHover = `scale-120 translate-y-0`;
-    const logoHover = `opacity-100 scale-100 translate-y-1`;
+    const iconHover = `scale-120 translate-y-1`;
+    const logoHover = `opacity-100 scale-100 translate-y-2`;
 
     return (
         <section
@@ -62,33 +56,33 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                     {/* A container for the technology icons */}
                     <div className="flex justify-center items-center text-center gap-6 transition-all duration-700 ease-in-out">
                         <div
-                            onMouseEnter={() => handleLogoHover('R', '/Sounds/pop.mp3', 1.2)}
+                            onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center"
                         >
-                            <img src={react} className={`${logoIcon} ${hover === 'R' ? iconHover : ''}`} alt="React Logo" />
-                            <p className={`${logoName} ${hover === 'R' ? logoHover : ''}`}>REACT</p>
+                            <img src={react} className={`${logoIcon} group-hover:${iconHover}`} alt="React Logo" />
+                            <p className={`${logoName} group-hover:${logoHover}`}>REACT</p>
                         </div>
                         <div
-                            onMouseEnter={() => handleLogoHover('V', '/Sounds/pop.mp3', 1.2)}
+                            onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
                         >
-                            <img src={vite} className={`${logoIcon} ${hover === 'V' ? iconHover : ''}`} alt="Vite Logo" />
-                            <p className={`${logoName} ${hover === 'V' ? logoHover : ''}`}>Vite</p>
+                            <img src={vite} className={`${logoIcon} group-hover:${iconHover}`} alt="Vite Logo" />
+                            <p className={`${logoName} group-hover:${logoHover}`}>Vite</p>
                         </div>
                         <div
-                            onMouseEnter={() => handleLogoHover('TWS', '/Sounds/pop.mp3', 1.4)}
+                            onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
                         >
-                            <img src={tailwindcss} className={`${logoIcon} ${hover === 'TWS' ? iconHover : ''}`} alt="Tailwind css Logo" />
-                            <p className={`${logoName} ${hover === 'TWS' ? logoHover : ''}`}>Tailwindcss</p>
+                            <img src={tailwindcss} className={`${logoIcon} group-hover:${iconHover}`} alt="Tailwind css Logo" />
+                            <p className={`${logoName} group-hover:${logoHover}`}>Tailwindcss</p>
                         </div>
 
                         <div
-                            onMouseEnter={() => handleLogoHover('TS', '/Sounds/pop.mp3', 1.6)}
+                            onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
                         >
-                            <img src={typescript} className={`${logoIcon} ${hover === 'TS' ? iconHover : ''}`} alt="TypeScript Logo" />
-                            <p className={`${logoName} ${hover === 'TS' ? logoHover : ''}`}>TypeScript</p>
+                            <img src={typescript} className={`${logoIcon} group-hover:${iconHover}`} alt="TypeScript Logo" />
+                            <p className={`${logoName} group-hover:${logoHover}`}>TypeScript</p>
                         </div>
                     </div>
                 </div>
@@ -99,19 +93,72 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                     {/* A container for the technology icons */}
                     <div className="flex justify-center items-center gap-6 transition-all duration-700 ease-in-out">
                         <div
-                            onMouseEnter={() => handleLogoHover('EJS', '/Sounds/pop.mp3', 1.8)}
+                            onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
                         >
-                            <img src={emailJS} className={`${logoIcon} ${hover === 'EJS' ? iconHover : ''}`} alt="Email JS Logo" />
-                            <p className={`${logoName} ${hover === 'EJS' ? logoHover : ''}`}>Email JS</p>
+                            <img src={emailJS} className={`${logoIcon} group-hover:${iconHover}`} alt="Email JS Logo" />
+                            <p className={`${logoName} group-hover:${logoHover}`}>Email JS</p>
                         </div>
                         <div
-                            onMouseEnter={() => handleLogoHover('FB', '/Sounds/pop.mp3', 2)}
+                            onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
                         >
-                            <img src={firebase} className={`${logoIcon} ${hover === 'FB' ? iconHover : ''}`} alt="Firebase Logo" />
-                            <p className={`${logoName} ${hover === 'FB' ? logoHover : ''}`}>Firebase</p>
+                            <img src={firebase} className={`${logoIcon} group-hover:${iconHover}`} alt="Firebase Logo" />
+                            <p className={`${logoName} group-hover:${logoHover}`}>Firebase</p>
                         </div>
+                    </div>
+                </div>
+
+                {/* --- NEW: "My Socials" Section --- */}
+                <div>
+                    <h3 className="text-3xl font-bold italic mb-3 transition-all duration-700 ease-in-out">My Socials</h3>
+                    {/* A container for the technology icons */}
+                    <div className="flex justify-center items-center gap-6 transition-all duration-700 ease-in-out">
+                        <a href="https://github.com/Phyzaaan">
+                        <div
+                        onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
+                            className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
+                        >
+                            <i className={`${logoIcon} fa-2x fa-brands fa-github group-hover:${iconHover}`}></i>
+                            <p className={`${logoName} group-hover:${logoHover}`}>GitHub</p>
+                        </div>
+                        </a>
+                        <a href="#">
+                        <div
+                        onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
+                            className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
+                        >
+                            <i className={`${logoIcon} fa-2x fa-brands fa-reddit group-hover:${iconHover}`}></i>
+                            <p className={`${logoName} group-hover:${logoHover}`}>Reddit</p>
+                        </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/phyzan/">
+                        <div
+                        onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
+                            className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
+                        >
+                            <i className={`${logoIcon} fa-2x fa-brands fa-linkedin-in group-hover:${iconHover}`}></i>
+                            <p className={`${logoName} group-hover:${logoHover}`}>LinkedIn</p>
+                        </div>
+                        </a>
+                        <a href="#">
+                        <div
+                        onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
+                            className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
+                        >
+                            <i className={`${logoIcon} fa-2x fa-brands fa-discord group-hover:${iconHover}`}></i>
+                            <p className={`${logoName} group-hover:${logoHover}`}>Discord</p>
+                        </div>
+                        </a>
+                        <a href="#">
+                        <div
+                        onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
+                            className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
+                        >
+                            <i className={`${logoIcon} fa-2x fa-brands fa-instagram group-hover:${iconHover}`}></i>
+                            <p className={`${logoName} group-hover:${logoHover}`}>instagram</p>
+                        </div>
+                        </a>
                     </div>
                 </div>
 
@@ -120,7 +167,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                     <span>Created with</span>
                     <Heart onClick={() => {
                         setShowHeart(true);
-                        playSound('/Sounds/paid.mp3', { isEnabled: volume });
+                        playSound(paidSound, { isEnabled: volume });
                     }}
                         className="inline-block text-red-500 fill-red-500 transition-all duration-700 ease-in-out" size={20} />
                     <span>By yours truly</span>
@@ -132,7 +179,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                     isVisible={showHeart}
                     onClose={() => {
                         setShowHeart(false)
-                        playSound('/Sounds/pop1.mp3', { isEnabled: volume });
+                        playSound(popSound, { isEnabled: volume });
                     }}
                     volume={volume}
                     bgMusic={bgMusic}

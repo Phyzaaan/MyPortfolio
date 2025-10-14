@@ -3,6 +3,7 @@
 :root {
   --primary-color: #F0F8FF;   
   --secondary-color: #A6C8FF; 
+  --color-invert: invert;
   --card-1: #4D74D4;        
   --card-2: #B4D6FF;      
   --btn-color: #6A8EEE;    
@@ -17,7 +18,8 @@
 
 .dark-theme {
   --primary-color: #071326;    
-  --secondary-color: #1A2B47;  
+  --secondary-color: #1A2B47; 
+  --color-invert: none; 
   --card-1: #00A7C4;
   --card-2: #3c8b9d;       
   --btn-color: #00BFFF;     

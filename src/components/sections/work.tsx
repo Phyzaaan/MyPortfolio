@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "../ui/projectCards";
 import SkillBar from "../ui/skillBar";
 import { playSound } from "../../utils/sound";
+import hoverSound from '/Sounds/Hover.mp3'
+import transSound from '/Sounds/trans.mp3'
 
 interface Props {
     isVisible: boolean;
@@ -44,7 +46,7 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
     const [topCard, setTopCard] = useState('p3');
 
     function handleSetTop(topCard: string) {
-        playSound('/Sounds/Hover.mp3', { isEnabled: volume })
+        playSound(hoverSound, { isEnabled: volume })
         setTopCard(topCard);
     }
 
@@ -65,7 +67,7 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
     }
 
     useEffect(() => {
-        playSound('/Sounds/trans.mp3', { isEnabled: volume, speed: 1.5, time: 0.5 });
+        playSound(transSound, { isEnabled: volume, speed: 1.5, time: 0.5 });
     }, [currentPageIndex]);
 
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import {Volume2, VolumeX, Sun, Moon, X} from 'lucide-react'
 import { playSound, stopAllSounds } from '../../utils/sound';
+import btnPressSound from '/Sounds/btn-press.mp3'
+import swooshSound from '/Sounds/swoosh.mp3'
 
 interface Props {
   title: string;
@@ -36,8 +38,8 @@ const Header: React.FC<Props> = ({
         <button
           onClick={() => {
             if (paid) {
-              playSound('/Sounds/btn-press.mp3', { isEnabled: volume })
-              playSound('/Sounds/swoosh.mp3', { isEnabled: volume })
+              playSound(btnPressSound, { isEnabled: volume })
+              playSound(swooshSound, { isEnabled: volume })
               setDarkMode(!darkMode);
             } else {
               setShowModal(true);
@@ -56,7 +58,7 @@ const Header: React.FC<Props> = ({
             if (paid) {
               setVolume(!volume);
               if (volume) { stopAllSounds() }
-              playSound('/Sounds/btn-press.mp3', { isEnabled: !volume })
+              playSound(btnPressSound, { isEnabled: !volume })
             } else {
               setShowModal(true);
             }

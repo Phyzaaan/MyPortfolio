@@ -1,5 +1,6 @@
 import React from "react";
 import { playSound } from "../../utils/sound";
+import btnPressSound from '/Sounds/btn-press.mp3'
 import { CopyrightIcon, MailCheck, Info, File, MessageCircle } from "lucide-react";
 
 
@@ -36,7 +37,7 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
             showSubModal(true);
         } else {
             // Decision #2: They paid? Go ahead and open the window!
-            playSound('/Sounds/btn-press.mp3', { isEnabled: volume });
+            playSound(btnPressSound, { isEnabled: volume });
             openWindow(windowId);
         }
     };

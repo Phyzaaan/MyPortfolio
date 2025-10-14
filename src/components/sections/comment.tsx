@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { FixedSizeList as List } from 'react-window';
 
 import { playSound } from "../../utils/sound";
+import btnPressSound from '/Sounds/btn-press.mp3'
+import paidSound from '/Sounds/paid.mp3'
+
 import Alert from '../ui/Alert'
 
 import { db } from "../../firebase/config";
@@ -68,7 +71,7 @@ const Comments: React.FC<Props> = ({ isVisible, volume, }) => {
         e.preventDefault();
         setIsSent(true);
         if (!newComments.trim()) return;
-        playSound('/Sounds/btn-press.mp3', { isEnabled: volume })
+        playSound(btnPressSound, { isEnabled: volume })
 
         try {
             await addDoc(collection(db, "comments"), {
@@ -78,7 +81,7 @@ const Comments: React.FC<Props> = ({ isVisible, volume, }) => {
                 isPinned: false,
             });
             // Play sound on success!
-            playSound('/Sounds/paid.mp3', { isEnabled: volume });
+            playSound(paidSound, { isEnabled: volume });
             setAlertMessage("Thanks for your Comments!");
             setShowAlert(true);
             // Clear the form
@@ -147,11 +150,11 @@ const Comments: React.FC<Props> = ({ isVisible, volume, }) => {
                                 value={newName}
                                 onChange={(e) => setNewName(e.target.value)}
                                 placeholder="Your name..."
-                                className="w-40 bg-[var(--input-color)] p-1 rounded-lg border-2 border-[var(--border-color)] focus:outline-none focus:outline-none focus:border-3 pl-2 transition-all duration-700 ease-in-out"
+                                className="w-40 bg-[var(--input-color)] p-1 rounded-lg border-2 border-[var(--border-color)] focus:outline-none focus:border-3 pl-2 transition-all duration-700 ease-in-out"
                             />
                         </div>
                         <button
-                            onClick={() => playSound('/Sounds/btn-press.mp3', { isEnabled: volume })}
+                            onClick={() => playSound(btnPressSound, { isEnabled: volume })}
                             disabled={isSent}
                             type="submit"
                             className="px-4 py-1 mt-2 bg-[var(--btn-color)] text-[var(–text-color)] font-bold rounded-lg border-2 border-[var(--border-color)]
