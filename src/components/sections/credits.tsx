@@ -114,7 +114,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                     <h3 className="text-3xl font-bold italic mb-3 transition-all duration-700 ease-in-out">My Socials</h3>
                     {/* A container for the technology icons */}
                     <div className="flex justify-center items-center gap-6 transition-all duration-700 ease-in-out">
-                        <a href="https://github.com/Phyzaaan">
+                        <a href="https://github.com/Phyzaaan" target="_blank">
                         <div
                         onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
@@ -123,7 +123,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                             <p className={`${logoName} group-hover:${logoHover}`}>GitHub</p>
                         </div>
                         </a>
-                        <a href="#">
+                        <a href="#" target="_blank">
                         <div
                         onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
@@ -132,7 +132,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                             <p className={`${logoName} group-hover:${logoHover}`}>Reddit</p>
                         </div>
                         </a>
-                        <a href="https://www.linkedin.com/in/phyzan/">
+                        <a href="https://www.linkedin.com/in/phyzan/" target="_blank">
                         <div
                         onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
@@ -141,7 +141,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                             <p className={`${logoName} group-hover:${logoHover}`}>LinkedIn</p>
                         </div>
                         </a>
-                        <a href="#">
+                        <a href="#" target="_blank">
                         <div
                         onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
@@ -150,7 +150,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                             <p className={`${logoName} group-hover:${logoHover}`}>Discord</p>
                         </div>
                         </a>
-                        <a href="#">
+                        <a href="#" target="_blank">
                         <div
                         onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
