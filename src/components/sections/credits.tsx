@@ -123,7 +123,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                             <p className={`${logoName} group-hover:${logoHover}`}>GitHub</p>
                         </div>
                         </a>
-                        <a href="#" target="_blank">
+                        <a href="https://www.reddit.com/user/Phyzaaan/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank">
                         <div
                         onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
@@ -141,7 +141,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                             <p className={`${logoName} group-hover:${logoHover}`}>LinkedIn</p>
                         </div>
                         </a>
-                        <a href="#" target="_blank">
+                        <a href="https://discord.com/users/1274577698001387540" target="_blank">
                         <div
                         onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
@@ -150,7 +150,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                             <p className={`${logoName} group-hover:${logoHover}`}>Discord</p>
                         </div>
                         </a>
-                        <a href="#" target="_blank">
+                        <a href="https://www.instagram.com/phyzaaan/" target="_blank">
                         <div
                         onMouseEnter={() => playSound(hoverSound, { isEnabled: volume })}
                             className="group w-15 flex flex-col justify-center items-center transition-all duration-700 ease-in-out"
