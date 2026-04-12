@@ -11,39 +11,39 @@ interface Props {
     volume: boolean;
 }
 
-import askMeAnything from '/img/askMeAnything.webp';
-import surprise from '/img/surprise.webp';
-import MyCharacterGuide from '/img/MyCharGuide.webp';
+import musicPlayer from '/img/Music.png';
+import elementalSynthLab from '/img/ElementalSynthLab.png';
+import askMeAnything from '/img/AskMeAnything.png';
 
 
 // Mock data for the project cards
 const projects = [
     {
-        imageUrl: surprise, // Placeholder image
-        webPath: 'https://nhrvqo.mimo.run/index.html',
-        title: 'My Best Project',
-        description: 'This is my best project yet. I Worked day and night tirelessly to make this project.',
-        name: 'Surprise'
+        imageUrl: musicPlayer, // Placeholder image
+        webPath: 'https://phyzaaan.github.io/Music-Player/',
+        title: 'Music Player',
+        description: 'A sleek music player with personal favroite playlist of songs.',
+        name: 'Music Player'
+    },
+    {
+        imageUrl: elementalSynthLab, // Placeholder image
+        webPath: 'https://phyzaaan.github.io/Elemental-Synthesis-Lab---Genshin-Impact-mini-game/',
+        title: 'Elemental Synth Lab',
+        description: 'An experimental synthesizer Genshin Impact mini-game.',
+        name: 'Elemental Synth Lab'
     },
     {
         imageUrl: askMeAnything, // Placeholder image
-        webPath: 'https://askmeanything-port.up.railway.app/',
-        title: 'Another Great Project',
-        description: 'This project took more than twenty-five years to make. It was a true labor of love.',
+        webPath: '#',
+        title: 'Ask Me Anything',
+        description: 'Coming Soon: Interactive Q&A platform.',
         name: 'Ask Me Anything'
-    },
-    {
-        imageUrl: MyCharacterGuide, // Placeholder image
-        webPath: 'https://my-character-guide.vercel.app/',
-        title: 'A Fun Project',
-        description: 'Built for fun, this is the most useless website that I have ever made.',
-        name: 'My Character Guide'
     }
 ];
 
 
 const Work: React.FC<Props> = ({ isVisible, volume }) => {
-    const [topCard, setTopCard] = useState('p3');
+    const [topCard, setTopCard] = useState('p2');
 
     function handleSetTop(topCardid: string) {
         if (topCardid !== topCard) {
@@ -85,7 +85,7 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
                 className="p-4 flex-grow flex flex-col gap-y-3 overflow-y-auto snap-y snap-mandatory h-full"
             >
                 <div className="h-full w-full flex-shrink-0 snap-start p-5">
-                    <h2 className="text-3xl font-bold text-[var(--text-color)] text-center transition-all duration-150 ease-in-out">
+                    <h2 className="text-3xl relative z-3 font-bold mix-blend-difference text-center transition-all duration-150 ease-in-out">
                         Here are some of my websites
                     </h2>
 
