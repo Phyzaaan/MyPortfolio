@@ -15,11 +15,11 @@ const SkillBar: React.FC<SkillBarProps> = ({ skill, percentage, size = 80 }) => 
   const progressOffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="flex flex-col items-center justify-center transition-all duration-700 ease-in-out">
+    <div className="flex flex-col items-center justify-center transition-all duration-150 ease-in-out">
       <div className="relative" style={{ width: size, height: size }}>
         {/* We use an absolute div to easily center the text over the SVG */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xl font-bold text-[var(--text-color)] transition-all duration-700 ease-in-out">{percentage}%</span>
+          <span className="text-xl font-bold text-[var(--text-color)] transition-all duration-150 ease-in-out">{percentage}%</span>
         </div>
         <svg
           className="-rotate-90" // Start the progress from the top
@@ -36,7 +36,7 @@ const SkillBar: React.FC<SkillBarProps> = ({ skill, percentage, size = 80 }) => 
 
           {/* Background Circle (The Track) */}
           <circle
-            className="text-[#eef2ff] transition-all duration-700 ease-in-out" // Muted background color
+            className="text-[#eef2ff] transition-all duration-150 ease-in-out" // Muted background color
             strokeWidth={strokeWidth}
             stroke="currentColor"
             fill="transparent"
@@ -46,7 +46,7 @@ const SkillBar: React.FC<SkillBarProps> = ({ skill, percentage, size = 80 }) => 
           />
           {/* Foreground Circle (The Progress) */}
           <circle
-            className="transition-all duration-700 ease-in-out"
+            className="transition-all duration-150 ease-in-out"
             strokeWidth={strokeWidth}
             stroke="url(#skillGradient)" // Apply the gradient
             fill="transparent"
@@ -60,7 +60,7 @@ const SkillBar: React.FC<SkillBarProps> = ({ skill, percentage, size = 80 }) => 
           />
         </svg>
       </div>
-      <span className="font-bold text-md text-[var(--text-color)] transition-all duration-700 ease-in-out">{skill}</span>
+      <span className="font-bold text-md text-[var(--text-color)] transition-all duration-150 ease-in-out">{skill}</span>
     </div>
   );
 };

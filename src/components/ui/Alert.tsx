@@ -19,12 +19,12 @@ const CustomAlert: React.FC<CustomAlertProps> = ({ isVisible, message, onClose, 
 
   return (
     // A backdrop to dim the rest of the page, makin' the alert feel important!
-    <div className={`fixed inset-0 bg-[var(--primary-color)]/60 flex items-center justify-center z-[100] ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} transition-all duration-700 ease-in-out`}>
+    <div className={`fixed inset-0 bg-[var(--primary-color)]/60 flex items-center justify-center z-[100] ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} transition-all duration-300 ease-in-out`}>
         
       {/* The pop-up itself with your amazing theme! */}
-      <div className={`bg-[var(--primary-color)] border-3 border-[var(--border-color)] rounded-lg shadow-xl flex flex-col p-6 text-center ${isVisible ? 'animate-fade-in opacity-100 scale-100' : 'animate-fade-out opacity-0 scale-0'} transition-all duration-700 ease-in-out`}>
+      <div className={`bg-[var(--primary-color)] border-3 border-[var(--border-color)] rounded-lg shadow-xl flex flex-col p-6 text-center ${isVisible ? 'animate-fade-in opacity-100 scale-100' : 'animate-fade-out opacity-0 scale-0'} transition-all duration-150 ease-in-out`}>
         
-        <p className="text-xl font-semibold text-[var(--text-color-2)] mb-6 transition-all duration-700 ease-in-out">
+        <p className="text-xl font-semibold text-[var(--text-color-2)] mb-6 transition-all duration-150 ease-in-out">
           {message}
         </p>
 
@@ -35,7 +35,7 @@ const CustomAlert: React.FC<CustomAlertProps> = ({ isVisible, message, onClose, 
                      active:translate-y-0.5 active:shadow-[0_2px_0px_var(--shadow)]
                      transition-all duration-150 ease-in-out"
         >
-          <span className='transition-all duration-700 ease-in-out'>OK</span>
+          <span className='transition-all duration-150 ease-in-out'>OK</span>
         </button>
 
       </div>

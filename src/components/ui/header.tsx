@@ -32,14 +32,14 @@ const Header: React.FC<Props> = ({
 
   // We will paste the JSX in here
   return (
-    <header className={`p-2 flex justify-between z-40 items-center border-b-3 border-[var(--border-color)] font-semibold ${paid ? 'bg-[var(--secondary-color)] transition-all duration-700 ease-in-out' : 'bg-gray-300'}`}>
-      <h2 className={`tracking-wide text-2xl transition-all duration-700 ease-in-out`}>{title}</h2>
+    <header className={`p-2 flex justify-between z-40 items-center border-b-3 border-[var(--border-color)] font-semibold ${paid ? 'bg-[var(--secondary-color)] transition-all duration-300 ease-in-out' : 'bg-gray-300'}`}>
+      <h2 className={`tracking-wide text-2xl transition-all duration-150 ease-in-out`}>{title}</h2>
       <nav className="flex gap-2">
         <button
           onClick={() => {
             if (paid) {
               playSound(btnPressSound, { isEnabled: volume })
-              playSound(swooshSound, { isEnabled: volume })
+                playSound(swooshSound, { isEnabled: volume, volume: 0.5, time: 0.2 })
               setDarkMode(!darkMode);
             } else {
               setShowModal(true);
@@ -51,7 +51,7 @@ const Header: React.FC<Props> = ({
              ${closeBtn ? 'translate-x-0 ' : 'translate-x-14'}`}
             name='theme-toggle'
         >
-          {darkMode ? <Moon className="h-6 w-6 transition-all duration-700 ease-in-out" /> : <Sun className="h-6 w-6 transition-all duration-700 ease-in-out" />}
+          {darkMode ? <Moon className="h-6 w-6 transition-all duration-150 ease-in-out" /> : <Sun className="h-6 w-6 transition-all duration-150 ease-in-out" />}
         </button>
         <button
           onClick={() => {
@@ -69,7 +69,7 @@ const Header: React.FC<Props> = ({
              ${closeBtn ? 'translate-x-0 ' : 'translate-x-14'}`} 
             name='Volume-toggle'
         >
-           {volume ? <Volume2 className="h-6 w-6 transition-all duration-700 ease-in-out" /> : <VolumeX className="h-6 w-6 transition-all duration-700 ease-in-out" />}
+           {volume ? <Volume2 className="h-6 w-6 transition-all duration-150 ease-in-out" /> : <VolumeX className="h-6 w-6 transition-all duration-150 ease-in-out" />}
         </button>
         <button
           onClick={closeWindow}
@@ -77,7 +77,7 @@ const Header: React.FC<Props> = ({
             ${closeBtn ? 'translate-x-0 ' : 'translate-x-20 pointer-events-none'}`} 
             name='Close-window'
         >
-          <X className="h-6 w-6 transition-all duration-700 ease-in-out" />
+          <X className="h-6 w-6 transition-all duration-150 ease-in-out" />
         </button>
       </nav>
     </header>

@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ProjectCard from "../ui/projectCards";
 import SkillBar from "../ui/skillBar";
 import { playSound } from "../../utils/sound";
-import hoverSound from '/Sounds/Hover.mp3'
+import hoverSound from '/Sounds/hover.mp3'
 import transSound from '/Sounds/trans.mp3'
 
 interface Props {
@@ -45,9 +45,11 @@ const projects = [
 const Work: React.FC<Props> = ({ isVisible, volume }) => {
     const [topCard, setTopCard] = useState('p3');
 
-    function handleSetTop(topCard: string) {
+    function handleSetTop(topCardid: string) {
+        if (topCardid !== topCard) {
         playSound(hoverSound, { isEnabled: volume })
-        setTopCard(topCard);
+        setTopCard(topCardid);
+        }
     }
 
     {/* Scroll logic */ }
@@ -73,8 +75,8 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
 
     return (
         <section
-            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] overflow-hidden flex flex-col transition-all duration-700 ease-in-out
-            ${isVisible ? 'top-[60px]' : 'top-[600px]'}`}
+            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] overflow-hidden flex flex-col transition-all duration-300 ease-in-out
+            ${isVisible ? 'top-[60px]' : 'top-[1300px]'}`}
         >
 
             {/* --- WINDOW CONTENT --- */}
@@ -83,12 +85,12 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
                 className="p-4 flex-grow flex flex-col gap-y-3 overflow-y-auto snap-y snap-mandatory h-full"
             >
                 <div className="h-full w-full flex-shrink-0 snap-start p-5">
-                    <h2 className="text-3xl font-bold text-[var(--text-color)] text-center transition-all duration-700 ease-in-out">
+                    <h2 className="text-3xl font-bold text-[var(--text-color)] text-center transition-all duration-150 ease-in-out">
                         Here are some of my websites
                     </h2>
 
                     {/* --- Project Card Stacking Container --- */}
-                    <div className="flex justify-center items-center pb-5 border-b-2 h-full transition-all duration-700 ease-in-out">
+                    <div className="flex justify-center items-center pb-5 border-b-2 h-full transition-all duration-150 ease-in-out">
                         <ProjectCard
                             setTop={handleSetTop}
                             id='p1'
@@ -112,7 +114,7 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
                 </div>
 
                 <div className="h-full w-full flex-shrink-0  snap-start p-5 mt-10">
-                    <h2 className="text-3xl font-bold text-[var(--text-color)] text-center transition-all duration-700 ease-in-out">
+                    <h2 className="text-3xl font-bold text-[var(--text-color)] text-center transition-all duration-150 ease-in-out">
                         My Skills
                     </h2>
                     <div className="grid grid-cols-[repeat(auto-fit,minmax(50px,1fr))] gap-3 mt-5 overflow-hidden">

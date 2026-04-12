@@ -5,13 +5,14 @@ interface SoundOptions {
   volume?: number;
   speed?: number;
   time?: number;
+  stopSounds?: boolean;
 }
 
 // Our Maestro's list now needs to know the NAME of the sound, too!
 // So we store it as an object.
 let currentlyPlaying: { source: string; audio: HTMLAudioElement }[] = [];
 
-// This function still Works for muting everything, so we'll keep it!
+// This function is for muting everything.
 export const stopAllSounds = () => {
   currentlyPlaying.forEach(p => {
     p.audio.pause();
@@ -22,21 +23,21 @@ export const stopAllSounds = () => {
 
 
 export const playSound = (soundFile: string, options: SoundOptions = {}) => {
-  const { isEnabled = true, volume = 1.0, speed = 1.0 , time = 0} = options;
+  const { isEnabled = true, volume = 1.0, speed = 1.0 , time = 0, stopSounds = false} = options;
 
   if (!isEnabled) {
     return;
   }
   
-  // Before we play a new sound, let's check if the SAME sound is already playing.
-  const existingSound = currentlyPlaying.find(p => p.source === soundFile);
-  if (existingSound) {
-    // If we find one, we stop just that one!
-    existingSound.audio.pause();
-    existingSound.audio.currentTime = 0;
-    // And we remove it from the list.
-    currentlyPlaying = currentlyPlaying.filter(p => p.audio !== existingSound.audio);
-  }
+  // // Before we play a new sound, let's check if the SAME sound is already playing.
+  // const existingSound = currentlyPlaying.find(p => p.source === soundFile);
+  // if (existingSound) {
+  //   // If we find one, we stop just that one!
+  //   existingSound.audio.pause();
+  //   existingSound.audio.currentTime = 0;
+  //   // And we remove it from the list.
+  //   currentlyPlaying = currentlyPlaying.filter(p => p.audio !== existingSound.audio);
+  // }
 
   // Now, we create and play the new sound like normal.
   const audio = new Audio(soundFile);

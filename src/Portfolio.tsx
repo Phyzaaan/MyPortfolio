@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, Suspense } from 'react';
 import './App.css';
 
 import { playSound } from './utils/sound';
-import popSound from '/Sounds/pop.mp3';
+import popOutSound from '/Sounds/pop-out.mp3';
+import popInSound from '/Sounds/pop-in.mp3';
 import transSound from '/Sounds/trans.mp3';
 import paidSound from '/Sounds/paid.mp3';
 
@@ -46,6 +47,7 @@ const Portfolio: React.FC = () => {
     setWindows(prev => {
       return { ...prev, [id]: true };
     });
+    playSound(popInSound, { isEnabled: volume, speed: 1.2, volume: 0.3 });
     setShowCloseBtn(true);
     setHeaderTitle(id);
   };
@@ -58,9 +60,9 @@ const Portfolio: React.FC = () => {
       Comments: false,
       Credits: false,
     });
+    playSound(popOutSound, { isEnabled: volume, speed: 1.2, volume: 0.3 });
     setShowCloseBtn(false);
     setHeaderTitle('Home');
-    playSound(popSound, { isEnabled: volume });
   };
 
 
@@ -80,7 +82,7 @@ const Portfolio: React.FC = () => {
         const newTitle = pageTitles[currentPageIndex] || pageTitles[pageTitles.length - 1];
 
         if (headerTitle !== newTitle) {
-          playSound(transSound, { isEnabled: volume, speed: 1.5, time: 0.5 });
+          playSound(transSound, { isEnabled: volume, speed: 1, time: 0.2 });
           setHeaderTitle(newTitle);
         }
       }
@@ -114,9 +116,9 @@ const Portfolio: React.FC = () => {
 
   // Hnandle subscription action
   const handleSubscribe = () => {
-    playSound(paidSound, { isEnabled: volume })
     setPaid(true);
     setShowSubModal(false);
+      playSound(paidSound, { isEnabled: true });
   };
 
 
@@ -131,7 +133,7 @@ const Portfolio: React.FC = () => {
 
 
         {/* Main content */}
-        <main className={`relative w-[80%] min-w-[350px] max-w-5xl h-[65vh] min-h-[350px] max-h-[900px] overflow-hidden flex flex-col backdrop-blur-sm border-3 border-[var(--border-color)] mx-auto ${paid ? 'rounded-2xl shadow-[2px_3px_5px_0_var(--shadow)] transition-all duration-700 ease-in-out' : 'bg-white'} ${broken ? 'bg-[var(--primary-color)]' : ''}`}>
+        <main className={`relative w-[80%] min-w-[350px] max-w-5xl h-[65vh] min-h-[350px] max-h-[900px] overflow-hidden flex flex-col backdrop-blur-sm border-3 border-[var(--border-color)] mx-auto ${paid ? 'rounded-2xl shadow-[2px_3px_5px_0_var(--shadow)] transition-all duration-150 ease-in-out' : 'bg-white'} ${broken ? 'bg-[var(--primary-color)]' : ''}`}>
           <Header
             title={headerTitle}
             paid={paid}

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { playSound } from '../../utils/sound';
-import popInSound from '/Sounds/pop-in.mp3'
-import popOutSound from '/Sounds/pop-out.mp3'
+import popInSound from '/Sounds/paper-slide.mp3'
 
 interface QnABlockProps {
   title: string;
@@ -19,27 +18,24 @@ const QnABlock: React.FC<QnABlockProps> = ({
 
 
   return (
-    <div className="bg-[var(--secondary-color)] rounded-lg p-2 border-2 border-[var(--border-color)] transition-all duration-700 ease-in-out">
+    <div className="bg-[var(--secondary-color)] rounded-lg p-2 border-2 border-[var(--border-color)] transition-all duration-150 ease-in-out">
       <button
         onClick={() => {
           setIsOpen(!isOpen); 
-          if (isOpen) {
-          playSound(popInSound, { isEnabled: volume})
-          } else {
-            playSound(popOutSound, { isEnabled: volume})
-          }
+          playSound(popInSound, { isEnabled: volume, volume: 0.5, speed: 1.5})
+          playSound(popInSound, { isEnabled: volume, volume: 0.5, speed: 1.5})
       }}
-        className="flex items-center justify-between w-full p-2 text-[var(--text-color-2)] hover:bg-[var(--secondary-color-2)] hover:text-[var(--text-color)] transition-all duration-700 ease-in-out"
+        className="flex items-center justify-between w-full p-2 text-[var(--text-color-2)] hover:bg-[var(--secondary-color-2)] hover:text-[var(--text-color)] transition-all duration-150 ease-in-out"
       >
-        <h3 className="font-bold text-lg text-[var(--text-color-2)] transition-all duration-700 ease-in-out">{title}</h3>
-        <ChevronDown className={`w-5 h-5 ${isOpen ? "rotate-180" : ""} transition-all duration-700 ease-in-out`} />
+        <h3 className="font-bold text-lg text-[var(--text-color-2)] transition-all duration-150 ease-in-out">{title}</h3>
+        <ChevronDown className={`w-5 h-5 ${isOpen ? "rotate-180" : ""} transition-all duration-150 ease-in-out`} />
       </button>
 
       <div
         className={` grid ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} transition-all duration-150 ease-in-out`}
       >
         <div className="overflow-hidden">
-          <p className="text-[var(--text-color)] px-3 pb-3 transition-all duration-700 ease-in-out">{content}</p>
+          <p className="text-[var(--text-color)] px-3 pb-3 transition-all duration-150 ease-in-out">{content}</p>
         </div>
       </div>
     </div>

@@ -99,15 +99,15 @@ const Comments: React.FC<Props> = ({ isVisible, volume, }) => {
         const Comments = comments[index];
         return (
             // The magic `style` prop tells the binoculars exactly where to place this Comments!
-            <div className="transition-all duration-700 ease-in-out" style={style}>
+            <div className="transition-all duration-150 ease-in-out" style={style}>
                 <div
                     key={Comments.id}
-                    className="flex items-start gap-x-3 bg-[var(--secondary-color)] border-2 border-[var(--border-color)] rounded-lg p-3 mx-2 transition-all duration-700 ease-in-out"
+                    className="flex items-start gap-x-3 bg-[var(--secondary-color)] border-2 border-[var(--border-color)] rounded-lg p-3 mx-2 transition-all duration-150 ease-in-out"
                 >
-                    <span className="scale-200 flex-shrink-0 transition-all duration-700 ease-in-out" >🙂</span>
+                    <span className="scale-200 flex-shrink-0 transition-all duration-150 ease-in-out" >🙂</span>
                     <div>
-                        <p className="font-extrabold text-[var(--text-color-2)]">{Comments.name}<span className="overflow-hidden rounded-2xl h-fit w-fit mx-2 transition-all duration-700 ease-in-out">{Comments.isPinned ? '✅' : ''}</span></p>
-                        <p className="transition-all duration-700 ease-in-out">{Comments.text}</p>
+                        <p className="font-extrabold text-[var(--text-color-2)]">{Comments.name}<span className="overflow-hidden rounded-2xl h-fit w-fit mx-2 transition-all duration-150 ease-in-out">{Comments.isPinned ? '✅' : ''}</span></p>
+                        <p className="transition-all duration-150 ease-in-out">{Comments.text}</p>
                     </div>
                 </div>
             </div>
@@ -120,37 +120,37 @@ const Comments: React.FC<Props> = ({ isVisible, volume, }) => {
 
     return (
         <section
-            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] overflow-hidden flex flex-col transition-all duration-700 ease-in-out
-            ${isVisible ? 'top-[60px]' : 'top-[600px]'}`}
+            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] overflow-hidden flex flex-col transition-all duration-300 ease-in-out
+            ${isVisible ? 'top-[60px]' : 'top-[1300px]'}`}
         >
 
             {/* --- WINDOW CONTENT --- */}
-            <div className="w-full h-full overflow-y-auto flex flex-col gap-4 bg-[var(--primary-color)] p-4 transition-all duration-700 ease-in-out">
+            <div className="w-full h-full overflow-y-auto flex flex-col gap-4 bg-[var(--primary-color)] p-4 transition-all duration-150 ease-in-out">
                 {/* --- Comments Submission Form --- */}
                 <form onSubmit={handleSubmit}>
                     {/* Text area for the new Comments */}
-                    <div className="transition-all duration-700 ease-in-out">
-                        <label className="transition-all duration-700 ease-in-out" htmlFor="email"></label>
+                    <div className="transition-all duration-150 ease-in-out">
+                        <label className="transition-all duration-150 ease-in-out" htmlFor="email"></label>
                         <textarea
                             id="email"
                             value={newComments}
                             onChange={(e) => setNewComments(e.target.value)}
                             placeholder="Write your Comments here..."
-                            className="w-full h-20 bg-[var(--input-color)] border-2 border-[var(--border-color)] rounded-lg focus:border-3 focus:outline-none p-2 transition-all duration-700 ease-in-out"
+                            className="w-full h-20 bg-[var(--input-color)] border-2 border-[var(--border-color)] rounded-lg focus:border-3 focus:outline-none p-2 transition-all duration-150 ease-in-out"
                             required
                         />
                     </div>
                     {/* Name input and submit button */}
-                    <div className="flex items-center justify-between mt-2 transition-all duration-700 ease-in-out">
-                        <div className="flex flex-col text-left transition-all duration-700 ease-in-out">
-                            <label htmlFor="name" className="text-sm font-bold text-[var(--text-color)]/70 transition-all duration-700 ease-in-out">Name (Optional)</label>
+                    <div className="flex items-center justify-between mt-2 transition-all duration-150 ease-in-out">
+                        <div className="flex flex-col text-left transition-all duration-150 ease-in-out">
+                            <label htmlFor="name" className="text-sm font-bold text-[var(--text-color)]/70 transition-all duration-150 ease-in-out">Name (Optional)</label>
                             <input
                                 id="name"
                                 type="text"
                                 value={newName}
                                 onChange={(e) => setNewName(e.target.value)}
                                 placeholder="Your name..."
-                                className="w-40 bg-[var(--input-color)] p-1 rounded-lg border-2 border-[var(--border-color)] focus:outline-none focus:border-3 pl-2 transition-all duration-700 ease-in-out"
+                                className="w-40 bg-[var(--input-color)] p-1 rounded-lg border-2 border-[var(--border-color)] focus:outline-none focus:border-3 pl-2 transition-all duration-150 ease-in-out"
                             />
                         </div>
                         <button
@@ -162,14 +162,14 @@ const Comments: React.FC<Props> = ({ isVisible, volume, }) => {
                         active:translate-y-1 active:shadow-[0_0px_0px_#4338ca]
                         transition-all duration-150 ease-in-out"
                         >
-                            <span className="transition-all duration-700 ease-in-out">Submit</span>
+                            <span className="transition-all duration-150 ease-in-out">Submit</span>
                         </button>
                     </div>
                 </form>
 
                 {/* --- comments Display Area --- */}
                 {/* This container has the themed border and will scroll if content overflows. */}
-                <div className="flex-grow w-full h-full border-2 border-[var(--border-color)] rounded-lg p-2 transition-all duration-700 ease-in-out">
+                <div className="flex-grow w-full h-full border-2 border-[var(--border-color)] rounded-lg p-2 transition-all duration-150 ease-in-out">
                     <List
                         height={330}
                         width={'100%'}  

@@ -44,14 +44,14 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
     
 
     return (
-        <div className="h-full w-full flex-shrink-0 snap-start flex flex-col p-5 transition-all duration-700 ease-in-out">
+        <section className="h-full w-full flex-shrink-0 snap-start flex flex-col p-5 transition-all duration-300 ease-in-out">
 
             <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 sm:gap-6 w-full max-w-4xl">
                 <button
                     onClick={() => handleButtonClick('About')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <Info className="scale-130 transition-all duration-700 ease-in-out"/>
+                    <Info className="scale-130 transition-all duration-150 ease-in-out"/>
                     About Me
                 </button>
 
@@ -59,7 +59,7 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
                     onClick={() => handleButtonClick('Work')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <File className="scale-130 transition-all duration-700 ease-in-out"/>
+                    <File className="scale-130 transition-all duration-150 ease-in-out"/>
                     Work
                 </button>
 
@@ -67,25 +67,25 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
                     onClick={() => handleButtonClick('Contact')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <MailCheck className="scale-130 transition-all duration-700 ease-in-out"/>
+                    <MailCheck className="scale-130 transition-all duration-150 ease-in-out"/>
                     Contact
                 </button>
                 <button
                     onClick={() => handleButtonClick('Comments')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <MessageCircle className="scale-130 transition-all duration-700 ease-in-out"/>
+                    <MessageCircle className="scale-130 transition-all duration-150 ease-in-out"/>
                     Comments
                 </button>
                 <button
                     onClick={() => handleButtonClick('Credits')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <CopyrightIcon className="scale-130 transition-all duration-700 ease-in-out"/>
+                    <CopyrightIcon className="scale-130 transition-all duration-150 ease-in-out"/>
                     Credits
                 </button>
             </div>
-        </div>
+        </section>
     );
 };
 
