@@ -77,8 +77,8 @@ const Bg: React.FC<Props> = ({ paid, darkMode}) => {
 
     // Otherwise, if 'paid' is true, return the background JSX.
     return (
-        <div className="fixed inset-0 -z-10 overflow-hidden transition-all duration-300 ease-in-out">
-            <div className={`relative w-full h-full ${darkMode ? 'bg-gray-900' : 'bg-sky-400'} transition-all duration-300 ease-in-out`}>
+        <div className="fixed inset-0 -z-10 overflow-hidden ">
+            <div className={`relative w-full h-full ${darkMode ? 'bg-gray-900' : 'bg-sky-400'} transition-all duration-300"`}>
                 <div className="relative w-full h-full">
                     <div className={`sun${darkMode ? ' hide' : ''}`} />
                     <div className={`moon${darkMode ? ' ' : ' hide'}`} />
@@ -86,12 +86,12 @@ const Bg: React.FC<Props> = ({ paid, darkMode}) => {
                     <div className={`absolute inset-0 ${darkMode ? 'opacity-100' : 'opacity-0'}`}>
                         <StarField />
                     </div>
-                    <div className={`absolute inset-0 z-2 ${!darkMode ? 'opacity-100' : 'opacity-0'} transition-all duration-300 ease-in-out`}>
+                    <div className={`absolute inset-0 z-2 ${!darkMode ? 'opacity-100' : 'opacity-0'} `}>
                         <Cloud delay={0} duration={30} top={'30%'} />
                         <Cloud delay={5} duration={40} top={'45%'} />
                         <Cloud delay={15} duration={50} top={'10%'} />
                     </div>
-                    <div className="absolute bottom-0 left-0 w-full h-[80%] transition-all duration-300 ease-in-out">
+                    <div className="absolute bottom-0 left-0 w-full h-[80%] ">
                         <div className={`wave-bg absolute bottom-0 left-0 w-[200%] h-full  ${darkMode ? 'opacity-40' : 'opacity-100'}`}></div>
                         <div className={`wave-bg-2 absolute bottom-0 left-0 w-[200%] h-full  ${darkMode ? 'opacity-30' : 'opacity-100'}`}></div>
                     </div>

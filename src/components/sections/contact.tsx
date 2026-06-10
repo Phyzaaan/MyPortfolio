@@ -18,7 +18,7 @@ interface Props {
 const Contact: React.FC<Props> = ({ isVisible, volume }) => {
 
     const [showAlert, setShowAlert] = useState(false);
-    const [alertMsg, setAlertMsg] = useState("hi");
+    const [alertMsg, setAlertMsg] = useState("");
 
     const formRef = useRef<HTMLFormElement>(null);
     const [isSending, setIsSending] = useState(false);
@@ -44,7 +44,7 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
         playSound(btnPressSound, { isEnabled: volume })
 
         emailjs.sendForm(
-            'service_4g77778',  // Service ID
+            'service_wkogxik',  // Service ID
             'template_8izhf0d', // Template ID
             formRef.current,
             '-AnaJnpfbDeUYlG_v'   // Public Key
@@ -68,24 +68,24 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
 
     return (
         <section
-            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] flex flex-col transition-all duration-300 ease-in-out
-            ${isVisible ? 'top-[60px]' : 'top-[1300px]'}`}
+            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] flex flex-col 
+            ${isVisible ? 'top-[60px]' : 'top-[1300px]'} transition-all duration-250`}
         >
 
             {/* --- WINDOW CONTENT --- */}
-            <div className="h-full w-full flex-shrink-0 snap-start p-5 mt-10 flex-grow flex flex-col gap-y-3 overflow-y-auto transition-all duration-150 ease-in-out">
+            <div className="h-full w-full flex-shrink-0 snap-start p-5 mt-10 flex-grow flex flex-col gap-y-3 overflow-y-auto ">
                 {/* Inner form container */}
                 <form
                     ref={formRef}
                     onSubmit={handleSubmit}
-                    className="w-full flex flex-col sm:flex-row gap-6 border-2 border-[var(--border-color)] rounded-lg p-6 transition-all duration-150 ease-in-out"
+                    className="w-full flex flex-col sm:flex-row gap-6 border-2 border-[var(--border-color)] rounded-lg p-6 "
                 >
                     {/* Left Column */}
-                    <div className="flex flex-col gap-y-4 w-full sm:w-1/3 transition-all duration-150 ease-in-out">
-                        <h2 className="text-2xl font-bold text-[var(--text-color)] text-center transition-all duration-150 ease-in-out">Send me mail</h2>
+                    <div className="flex flex-col gap-y-4 w-full sm:w-1/3 ">
+                        <h2 className="text-2xl font-bold text-[var(--text-color)] text-center ">Send me mail</h2>
                         {/* --- Email Input --- */}
                         <div>
-                            <label htmlFor="email" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 transition-all duration-150 ease-in-out" id="email-label">Email</label>
+                            <label htmlFor="email" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 " id="email-label">Email</label>
                             <input
                                 id="email"
                                 name="email"
@@ -93,13 +93,13 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
-                                className="w-full bg-[var(--input-color)] p-2 rounded-lg border-2 border-[var(--border-color)] focus:outline-none focus:ring-2 focus:ring-[#00eaff] transition-all duration-150 ease-in-out"
+                                className="w-full bg-[var(--input-color)] p-2 rounded-lg border-2 border-[var(--border-color)] focus:outline-none focus:ring-2 focus:ring-[#00eaff] "
                             />
                         </div>
 
                         {/* --- Subject Input --- */}
-                        <div className="transition-all duration-150 ease-in-out">
-                            <label htmlFor="subject" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 transition-all duration-150 ease-in-out">Subject</label>
+                        <div className="">
+                            <label htmlFor="subject" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 ">Subject</label>
                             <input
                                 id="subject"
                                 name="subject"
@@ -107,7 +107,7 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
                                 value={formData.subject}
                                 onChange={handleChange}
                                 required
-                                className="w-full p-2 rounded-lg bg-[var(--input-color)] border-2 border-[var(--border-color)] focus:outline-none focus:ring-2 focus:ring-[#00eaff] transition-all duration-150 ease-in-out"
+                                className="w-full p-2 rounded-lg bg-[var(--input-color)] border-2 border-[var(--border-color)] focus:outline-none focus:ring-2 focus:ring-[#00eaff] "
                             />
                         </div>
 
@@ -118,24 +118,25 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
                             className="w-full bg-[var(--btn-color)] text-[var(--text-color)] font-bold py-3 rounded-lg border-2 border-[var(--border-color)]
                            shadow-[0_5px_0px_var(--shadow)] hover:bg-white/20
                            active:translate-y-1 active:shadow-[0_2px_0px_#4338ca]
-                           transition-all duration-150 ease-in-out"
+                           transition-transform duration-100 
+                           "
                         >
-                            <span className="transition-all duration-150 ease-in-out">Send</span>
+                            <span className="">Send</span>
                         </button>
                     </div>
 
                     {/* Right Column */}
-                    <div className="w-full sm:w-2/3 h-[250px] sm:h-full transition-all duration-150 ease-in-out">
+                    <div className="w-full sm:w-2/3 h-[250px] sm:h-full ">
                         {/* --- Message Textarea (Formerly a Reusable Component) --- */}
                         <div className="w-full h-full flex flex-col">
-                            <label htmlFor="message" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 transition-all duration-150 ease-in-out">Enter your Email here</label>
+                            <label htmlFor="message" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 ">Enter your Email here</label>
                             <textarea
                                 id="message"
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
                                 required
-                                className="w-full h-full p-2 bg-[var(--input-color)] rounded-lg border-2 border-[var(--border-color)] resize-none focus:outline-none focus:ring-2 focus:ring-[#00eaff] transition-all duration-150 ease-in-out"
+                                className="w-full h-full p-2 bg-[var(--input-color)] rounded-lg border-2 border-[var(--border-color)] resize-none focus:outline-none focus:ring-2 focus:ring-[#00eaff] "
                             />
                         </div>
                     </div>

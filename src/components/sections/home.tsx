@@ -24,7 +24,7 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
 
     // These styles for color and effects can remain the same
     const paidButtonStyles =
-        ' hover:bg-[var(--secondary-color)]/50 rounded-md border border-[var(--border-color)] shadow-[1px_3px_0_1px_var(--text-color)] active:translate-y-1 active:shadow-none transition-all duration-150 ease-in-out'
+        ' hover:bg-[var(--secondary-color)]/50 rounded-md border border-[var(--border-color)] shadow-[1px_3px_0_1px_var(--text-color)] active:translate-y-1 active:shadow-none transition-transform duration-100 '
         ;
     const unpaidButtonStyles = `
         border border-gray-400 bg-gray-200 rounded-md
@@ -44,14 +44,14 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
     
 
     return (
-        <section className="h-full w-full flex-shrink-0 snap-start flex flex-col p-5 transition-all duration-300 ease-in-out">
+        <section className="h-full w-full flex-shrink-0 snap-start flex flex-col p-5">
 
             <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 sm:gap-6 w-full max-w-4xl">
                 <button
                     onClick={() => handleButtonClick('About')}
-                    className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
+                    className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles} `}
                 >
-                    <Info className="scale-130 transition-all duration-150 ease-in-out"/>
+                    <Info className="scale-130 "/>
                     About Me
                 </button>
 
@@ -59,7 +59,7 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
                     onClick={() => handleButtonClick('Work')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <File className="scale-130 transition-all duration-150 ease-in-out"/>
+                    <File className="scale-130 "/>
                     Work
                 </button>
 
@@ -67,21 +67,21 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
                     onClick={() => handleButtonClick('Contact')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <MailCheck className="scale-130 transition-all duration-150 ease-in-out"/>
+                    <MailCheck className="scale-130 "/>
                     Contact
                 </button>
                 <button
                     onClick={() => handleButtonClick('Comments')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <MessageCircle className="scale-130 transition-all duration-150 ease-in-out"/>
+                    <MessageCircle className="scale-130 "/>
                     Comments
                 </button>
                 <button
                     onClick={() => handleButtonClick('Credits')}
                     className={`${baseButtonStyles} ${paid ? paidButtonStyles : unpaidButtonStyles}`}
                 >
-                    <CopyrightIcon className="scale-130 transition-all duration-150 ease-in-out"/>
+                    <CopyrightIcon className="scale-130 "/>
                     Credits
                 </button>
             </div>

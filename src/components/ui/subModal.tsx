@@ -24,7 +24,7 @@ const SubscriptionModal: React.FC<Props> = ({
         </p>
         <button
           onClick={onSubscribe}
-          className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300"
+          className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-transform duration-100 "
         >
           Subscribe Now!
         </button>

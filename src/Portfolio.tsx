@@ -4,7 +4,7 @@ import './App.css';
 import { playSound } from './utils/sound';
 import popOutSound from '/Sounds/pop-out.mp3';
 import popInSound from '/Sounds/pop-in.mp3';
-import transSound from '/Sounds/trans.mp3';
+import swooshSound from '/Sounds/swoosh.mp3'
 import paidSound from '/Sounds/paid.mp3';
 
 import Welcome from './components/sections/welcome';
@@ -82,7 +82,7 @@ const Portfolio: React.FC = () => {
         const newTitle = pageTitles[currentPageIndex] || pageTitles[pageTitles.length - 1];
 
         if (headerTitle !== newTitle) {
-          playSound(transSound, { isEnabled: volume, speed: 1, time: 0.2 });
+          playSound(swooshSound, { isEnabled: volume, volume: 0.7, speed: 1.5, time: 0.2 });
           setHeaderTitle(newTitle);
         }
       }
@@ -133,7 +133,7 @@ const Portfolio: React.FC = () => {
 
 
         {/* Main content */}
-        <main className={`relative w-[80%] min-w-[350px] max-w-5xl h-[65vh] min-h-[350px] max-h-[900px] overflow-hidden flex flex-col backdrop-blur-sm border-3 border-[var(--border-color)] mx-auto ${paid ? 'rounded-2xl shadow-[2px_3px_5px_0_var(--shadow)] transition-all duration-150 ease-in-out' : 'bg-white'} ${broken ? 'bg-[var(--primary-color)]' : ''}`}>
+        <main className={`relative w-[80%] min-w-[350px] max-w-5xl h-[65vh] min-h-[350px] max-h-[900px] overflow-hidden flex flex-col backdrop-blur-sm border-3 border-[var(--border-color)] mx-auto ${paid ? 'rounded-2xl shadow-[2px_3px_5px_0_var(--shadow)]' : 'bg-white'} ${broken ? 'bg-[var(--primary-color)]' : ''}`}>
           <Header
             title={headerTitle}
             paid={paid}
