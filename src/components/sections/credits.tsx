@@ -22,10 +22,6 @@ interface Props {
     fallback: React.ReactNode;
 }
 
-
-
-
-
 const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback }) => {
     const [showHeart, setShowHeart] = useState(false);
 
@@ -43,13 +39,6 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
 
             {/* --- WINDOW CONTENT --- */}
             <div className="flex-grow flex flex-col justify-between items-center p-6 text-center text-[var(--text-color)] ">
-
-                {/* Top Text Block */}
-                <div>
-                    <h3 className="text-3xl font-bold italic ">Inspired by</h3>
-                    <a href="https://www.sharyap.com/" target="_blank" className="text-lg text-[var(--text-color)]/70 ">Shar's Desktop</a>
-                </div>
-
                 {/* --- NEW: "Built With" Section --- */}
                 <div>
                     <h3 className="text-3xl font-bold italic mb-3 ">Built With</h3>
@@ -87,7 +76,7 @@ const Credits: React.FC<Props> = ({ isVisible, volume, bgMusic, broken, fallback
                     </div>
                 </div>
 
-                {/* --- NEW: "Services Used" Section --- */}
+                {/* ---  ervices Used Section --- */}
                 <div>
                     <h3 className="text-3xl font-bold italic mb-3 ">Servecies Used</h3>
                     {/* A container for the technology icons */}

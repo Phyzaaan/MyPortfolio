@@ -16,7 +16,6 @@ export const stopAllSounds = () => {
   currentlyPlaying = [];
 };
 
-
 export const playSound = (soundFile: string, options: SoundOptions = {}) => {
   const { isEnabled = true, volume = 1.0, speed = 1.0 , time = 0} = options;
 
