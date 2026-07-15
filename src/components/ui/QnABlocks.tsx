@@ -8,7 +8,6 @@ interface QnABlockProps {
   content: React.ReactNode;
   volume: boolean;
 }
-// A reusable component for the Q&A blocks inside the window
 const QnABlock: React.FC<QnABlockProps> = ({
   title,
   content,
@@ -41,5 +40,4 @@ const QnABlock: React.FC<QnABlockProps> = ({
   );
 };
 
-// This line makes the component available to be imported in other files
 export default QnABlock;

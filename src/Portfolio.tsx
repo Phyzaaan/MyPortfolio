@@ -75,10 +75,9 @@ const Portfolio: React.FC = () => {
     const handleScroll = () => {
       const container = scrollContainerRef.current;
       if (container) {
-        const pageHeight = container.clientHeight; // Height of one page
+        const pageHeight = container.clientHeight;
         const currentPageIndex = Math.round(container.scrollTop / pageHeight);
 
-        // Get the new title, default to last title if out of bounds
         const newTitle = pageTitles[currentPageIndex] || pageTitles[pageTitles.length - 1];
 
         if (headerTitle !== newTitle) {
@@ -114,7 +113,6 @@ const Portfolio: React.FC = () => {
     }
   }, [paid, darkMode, broken]);
 
-  // Hnandle subscription action
   const handleSubscribe = () => {
     setPaid(true);
     setShowSubModal(false);
@@ -161,14 +159,12 @@ const Portfolio: React.FC = () => {
             />
           </section>
 
-          {/* About Me */}
           <AboutMe
             isVisible={windows.About}
             volume={volume}
             openWindow={openWindow}
           />
-
-          {/* Work */}
+   
           <Work
             isVisible={windows.Work}
             volume={volume}

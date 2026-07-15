@@ -3,7 +3,6 @@ import { playSound } from "../../utils/sound";
 import btnPressSound from '/Sounds/btn-press.mp3'
 import { CopyrightIcon, MailCheck, Info, File, MessageCircle } from "lucide-react";
 
-
 interface Props {
     paid: boolean;
     showSubModal: (value: boolean) => void;
@@ -33,10 +32,8 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
 
       const handleButtonClick = (windowId: 'About' | 'Work' | 'Contact' | 'Comments' | 'Credits') => {
         if (!paid) {
-            // Decision #1: Not paid? Show the subscription modal.
             showSubModal(true);
         } else {
-            // Decision #2: They paid? Go ahead and open the window!
             playSound(btnPressSound, { isEnabled: volume });
             openWindow(windowId);
         }
@@ -89,5 +86,4 @@ const Home: React.FC<Props> = ({ paid, showSubModal, volume, openWindow }) => {
     );
 };
 
-// This line makes the component available to be imported in other files
 export default Home;

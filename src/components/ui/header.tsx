@@ -9,9 +9,9 @@ interface Props {
   paid: boolean;
   darkMode: boolean;
   volume: boolean;
-  setDarkMode: (value: boolean) => void; // A function that takes a boolean
-  setVolume: (value: boolean) => void;   // A function that takes a boolean
-  setShowModal: (value: boolean) => void; // A function that takes a boolean
+  setDarkMode: (value: boolean) => void; 
+  setVolume: (value: boolean) => void;   
+  setShowModal: (value: boolean) => void; 
   closeWindow: () => void;
   closeBtn: boolean;
 }
@@ -30,7 +30,6 @@ const Header: React.FC<Props> = ({
   closeBtn
 }) => {
 
-  // We will paste the JSX in here
   return (
     <header className={`p-2 flex justify-between z-40 items-center border-b-3 border-[var(--border-color)] font-semibold ${paid ? 'bg-[var(--secondary-color)] ' : 'bg-gray-300'}`}>
       <h2 className={`tracking-wide text-2xl `}>{title}</h2>
@@ -84,5 +83,4 @@ const Header: React.FC<Props> = ({
   );
 };
 
-// This line makes the component available to be imported in other files
 export default Header;

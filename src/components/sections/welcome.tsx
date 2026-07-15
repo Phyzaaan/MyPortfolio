@@ -23,5 +23,4 @@ const Welcome: React.FC<Props> = ({
   );
 };
 
-// This line makes the component available to be imported in other files
 export default Welcome;

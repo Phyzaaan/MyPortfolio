@@ -1,16 +1,11 @@
 import React from "react";
-
-
 import QnABlock from "../ui/QnABlocks";
-{/* About Me Window */ }
 
 interface Props {
   isVisible: boolean;
   volume: boolean;
   openWindow: (id: 'Comments') => void;
 }
-
-
 
 const AboutMe: React.FC<Props> = ({ isVisible, volume, openWindow}) => {
   return (
@@ -43,5 +38,4 @@ const AboutMe: React.FC<Props> = ({ isVisible, volume, openWindow}) => {
   );
 };
 
-// This line makes the component available to be imported in other files
 export default AboutMe;

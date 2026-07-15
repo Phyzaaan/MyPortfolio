@@ -1,45 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --primary-color: #F0F8FF;   
-  --secondary-color: #A6C8FF; 
+  --primary-color: #f0f8ff;
+  --secondary-color: #a6c8ff;
   --color-invert: invert;
-  --card-1: #4D74D4;        
-  --card-2: #B4D6FF;      
-  --btn-color: #6A8EEE;    
-  --input-color: #D6E6FF;     
-  --text-color: #0B2447;       
-  --text-color-2: #5f38fa; 
-  --border-color: #0B2447;    
-  --shadow: #0B244766;    
+  --card-1: #4d74d4;
+  --card-2: #b4d6ff;
+  --btn-color: #6a8eee;
+  --input-color: #d6e6ff;
+  --text-color: #0b2447;
+  --text-color-2: #5f38fa;
+  --border-color: #0b2447;
+  --shadow: #0b244766;
 }
 
-
 .dark-theme {
-  --primary-color: #071326;    
-  --secondary-color: #1A2B47; 
-  --color-invert: none; 
-  --card-1: #00A7C4;
-  --card-2: #3c8b9d;       
-  --btn-color: #00BFFF;     
-  --input-color: #10223F; 
-  --text-color: #EAF6FF;       
-  --text-color-2: #67E8F9;
-  --border-color: #EAF6FF;
-  --shadow: #EAF6FF99;    
+  --primary-color: #071326;
+  --secondary-color: #1a2b47;
+  --color-invert: none;
+  --card-1: #00a7c4;
+  --card-2: #3c8b9d;
+  --btn-color: #00bfff;
+  --input-color: #10223f;
+  --text-color: #eaf6ff;
+  --text-color-2: #67e8f9;
+  --border-color: #eaf6ff;
+  --shadow: #eaf6ff99;
 }
 
 .broken {
-  --primary-color: #1A051A;    /* Very dark, almost black, for a somber base */
-  --secondary-color: #331A33;  /* Dark muted purple-gray for secondary elements */
-  --card-1: #8A0000;          /* Deep, broken-heart red for main cards */
-  --card-2: #5C0000;          /* Slightly darker red for card accents */
-  --btn-color: #CC6699;        /* Muted, bruised pink for interactive elements */
-  --input-color: #2F0A2F;      /* Dark, subtle purple for input fields */
-  --text-color: #F0E0F0;       /* Off-white/pale lavender for main text */
-  --text-color-2: #A37F9E;     /* Muted dusty rose for secondary text */
-  --border-color: #4D264D;     /* Dark desaturated purple for borders */
-  --shadow: #8A00004D;        /* A subtle, melancholic red shadow */
+  --primary-color: #1a051a;
+  --secondary-color: #331a33;
+  --card-1: #8a0000;
+  --card-2: #5c0000;
+  --btn-color: #cc6699;
+  --input-color: #2f0a2f;
+  --text-color: #f0e0f0;
+  --text-color-2: #a37f9e;
+  --border-color: #4d264d;
+  --shadow: #8a00004d;
 }
 
 .paid-font {
@@ -57,9 +56,7 @@
   margin: 0 auto;
   padding: 2rem;
   color: var(--text-color);
-
   scrollbar-width: thin;
-  /* Colors are [thumb] [track] */
   scrollbar-color: var(--border-color) #e6000000;
   scroll-behavior: smooth;
 }
@@ -76,12 +73,14 @@
   background: #fde047;
   opacity: 1;
   transform: scale(1);
-  z-index : 30;
-  transition: opacity 0.6s , transform 0.5s linear;
+  z-index: 30;
+  transition:
+    opacity 0.6s,
+    transform 0.5s linear;
 }
 .sun.hide {
   opacity: 0;
-  transform:translateX(225px);
+  transform: translateX(225px);
 }
 
 .moon {
@@ -96,12 +95,14 @@
   opacity: 1;
   transform: scale(1) rotate(0deg);
   z-index: 30;
-  transition: opacity 0.6s , transform 0.5s linear;
+  transition:
+    opacity 0.6s,
+    transform 0.5s linear;
 }
 .moon.hide {
   opacity: 0;
   transform: scale(0) rotate(0deg);
-  transform:translateX(-225px);
+  transform: translateX(-225px);
 }
 
 .mp3e-bg {
@@ -119,52 +120,79 @@
 }
 
 @keyframes wave {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-45%); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-45%);
+  }
 }
 
 @keyframes twinkle {
-  0%, 100% {
-      opacity: 1;
-      scale: 2;
+  0%,
+  100% {
+    opacity: 1;
+    scale: 2;
   }
   50% {
-      opacity: 0.5;
-      scale: 1;
+    opacity: 0.5;
+    scale: 1;
   }
 }
 
 @keyframes cloud-flow {
-    0%   { transform: translateX(130vw); } /* Start just off-screen right */
-    100% { transform: translateX(-20vw); }  /* End far off-screen left */
+  0% {
+    transform: translateX(130vw);
+  }
+  100% {
+    transform: translateX(-20vw);
+  }
 }
 
-
-
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-  20%, 40%, 60%, 80% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
 }
 
 .animate-shake {
-  animation: shake 0.2s ;
+  animation: shake 0.2s;
 }
 
 @keyframes explode {
-    0% { transform: scale(1) rotate(0); opacity: 1; }
-    100% { transform: scale(1.5) rotate(15deg); opacity: 0; }
+  0% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(15deg);
+    opacity: 0;
+  }
 }
 
 .animate-explode {
-    animation: explode 0.3s ease-out forwards;
+  animation: explode 0.3s ease-out forwards;
 }
-
 
 button {
   cursor: pointer;
 }
 
 .cursor-not-allowed {
-  cursor:not-allowed;
+  cursor: not-allowed;
 }

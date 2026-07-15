@@ -12,16 +12,13 @@ interface CustomAlertProps {
 const CustomAlert: React.FC<CustomAlertProps> = ({ isVisible, message, onClose, volume }) => {
 
   const handleClose = () => {
-    // Play a little 'close' sound to make it feel nice
     playSound(btnPressSound, { isEnabled: volume });
     onClose();
   };
 
   return (
-    // A backdrop to dim the rest of the page, makin' the alert feel important!
     <div className={`fixed inset-0 bg-[var(--primary-color)]/60 flex items-center justify-center z-[100] ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'} `}>
         
-      {/* The pop-up itself with your amazing theme! */}
       <div className={`bg-[var(--primary-color)] border-3 border-[var(--border-color)] rounded-lg shadow-xl flex flex-col p-6 text-center ${isVisible ? 'animate-fade-in opacity-100 scale-100' : 'animate-fade-out opacity-0 scale-0'} `}>
         
         <p className="text-xl font-semibold text-[var(--text-color-2)] mb-6 ">

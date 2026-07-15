@@ -3,30 +3,26 @@ import React from 'react';
 interface SkillBarProps {
   skill: string;
   percentage: number;
-  size?: number; // Make the size customizable
+  size?: number; 
 }
 
 const SkillBar: React.FC<SkillBarProps> = ({ skill, percentage, size = 80 }) => {
-  // --- SVG & Circle Calculations ---
   const strokeWidth = 6;
   const radius = (size / 2) - (strokeWidth * 2);
   const circumference = 2 * Math.PI * radius;
-  // Calculate the stroke-dashoffset for the progress
   const progressOffset = circumference - (percentage / 100) * circumference;
 
   return (
     <div className="flex flex-col items-center justify-center ">
       <div className="relative" style={{ width: size, height: size }}>
-        {/* We use an absolute div to easily center the text over the SVG */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-xl font-bold text-[var(--text-color)] ">{percentage}%</span>
         </div>
         <svg
-          className="-rotate-90" // Start the progress from the top
+          className="-rotate-90" 
           width={size}
           height={size}
         >
-          {/* Define the gradient for the progress bar */}
           <defs>
             <linearGradient id="skillGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#a5b4fc" />
@@ -34,9 +30,8 @@ const SkillBar: React.FC<SkillBarProps> = ({ skill, percentage, size = 80 }) => 
             </linearGradient>
           </defs>
 
-          {/* Background Circle (The Track) */}
           <circle
-            className="text-[#eef2ff] " // Muted background color
+            className="text-[#eef2ff] "
             strokeWidth={strokeWidth}
             stroke="currentColor"
             fill="transparent"
@@ -44,11 +39,10 @@ const SkillBar: React.FC<SkillBarProps> = ({ skill, percentage, size = 80 }) => 
             cx={size / 2}
             cy={size / 2}
           />
-          {/* Foreground Circle (The Progress) */}
           <circle
             className=""
             strokeWidth={strokeWidth}
-            stroke="url(#skillGradient)" // Apply the gradient
+            stroke="url(#skillGradient)" 
             fill="transparent"
             r={radius}
             cx={size / 2}

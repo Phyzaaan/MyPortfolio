@@ -14,24 +14,23 @@ import elementalSynthLab from '/img/ElementalSynthLab.png';
 import FuriMusic from '/img/FuriMusic.png';
 
 
-// Mock data for the project cards
 const projects = [
     {
-        imageUrl: musicPlayer, // Placeholder image
+        imageUrl: musicPlayer, 
         webPath: 'https://phyzaaan.github.io/Music-Player/',
         title: 'Music Player',
         description: 'A sleek music player with personal favroite playlist of songs.',
         name: 'Music Player'
     },
     {
-        imageUrl: elementalSynthLab, // Placeholder image
+        imageUrl: elementalSynthLab, 
         webPath: 'https://phyzaaan.github.io/Elemental-Synthesis-Lab---Genshin-Impact-mini-game/',
         title: 'Elemental Synth Lab',
         description: 'An experimental synthesizer Genshin Impact mini-game.',
         name: 'Elemental Synth Lab'
     },
     {
-        imageUrl: FuriMusic, // Placeholder image
+        imageUrl: FuriMusic, 
         webPath: 'https://furi-music.vercel.app/',
         title: 'Furi Music',
         description: 'This webapp is for MOBILES! Its still under construction.',
@@ -49,7 +48,6 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
         setTopCard(topCardid);
         }
     }
-
 
     return (
         <section
@@ -94,5 +92,4 @@ const Work: React.FC<Props> = ({ isVisible, volume }) => {
     );
 };
 
-// This line makes the component available to be imported in other files
 export default Work;

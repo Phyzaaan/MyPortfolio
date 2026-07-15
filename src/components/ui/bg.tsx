@@ -15,7 +15,6 @@ interface CloudProps {
 
 
 const StarField: React.FC = () => {
-  // Add 'size' to the state's type definition
   const [stars, setStars] = useState<{ top: string; left: string; animationDuration: string; animationDelay: string; size: number }[]>([]);
 
   useEffect(() => {
@@ -25,7 +24,6 @@ const StarField: React.FC = () => {
         left: `${Math.random() * 100}%`,
         animationDuration: `${Math.random() * 3 + 2}s`,
         animationDelay: `${Math.random() * 3}s`,
-        // Calculate the size ONCE and store it in state
         size: Math.random() * 2 + 1,
       }));
       setStars(newStars);
@@ -39,7 +37,6 @@ const StarField: React.FC = () => {
         <Star
           key={i}
           className="absolute text-white scale-[2]"
-          // Use the stable size from the state
           size={star.size}
           style={{
             top: star.top,
@@ -70,12 +67,10 @@ const Cloud: React.FC<CloudProps> = ({ delay, duration, top }) => (
 
 
 const Bg: React.FC<Props> = ({ paid, darkMode}) => {
-    // If 'paid' is false, render nothing. This is clean and explicit.
     if (!paid) {
         return null;
     }
 
-    // Otherwise, if 'paid' is true, return the background JSX.
     return (
         <div className="fixed inset-0 -z-10 overflow-hidden ">
             <div className={`relative w-full h-full ${darkMode ? 'bg-gray-900' : 'bg-sky-400'} transition-all duration-300"`}>

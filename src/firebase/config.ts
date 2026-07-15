@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyAHx7YToJOD0Rnws7kD2yf1JyAXSCRPu20",
     authDomain: "my-lil-portfolio.firebaseapp.com",
@@ -12,7 +11,6 @@ const firebaseConfig = {
     measurementId: "G-B8MVGQEKW8"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// Get a reference to the Firestore database service
+
 export const db = getFirestore(app);

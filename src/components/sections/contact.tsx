@@ -11,10 +11,6 @@ interface Props {
     volume: boolean;
 }
 
-
-
-
-
 const Contact: React.FC<Props> = ({ isVisible, volume }) => {
 
     const [showAlert, setShowAlert] = useState(false);
@@ -23,13 +19,11 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
     const formRef = useRef<HTMLFormElement>(null);
     const [isSending, setIsSending] = useState(false);
 
-    {/* Handle form submission */ }
     const [formData, setFormData] = useState({
         email: '',
         subject: '',
         message: ''
     });
-
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -52,8 +46,8 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
             playSound(paidSound, { isEnabled: volume });
             setAlertMsg("Email sent successfully!");
             setShowAlert(true);
-            formRef.current?.reset(); // Reset the form fields
-            setFormData({ email: '', subject: '', message: '' }); // Reset state
+            formRef.current?.reset();
+            setFormData({ email: '', subject: '', message: '' }); 
         })
             .catch((error) => {
                 setAlertMsg(`Failed... ${error.text}`);
@@ -127,7 +121,7 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
 
                     {/* Right Column */}
                     <div className="w-full sm:w-2/3 h-[250px] sm:h-full ">
-                        {/* --- Message Textarea (Formerly a Reusable Component) --- */}
+                        {/* --- Message Textarea --- */}
                         <div className="w-full h-full flex flex-col">
                             <label htmlFor="message" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 ">Enter your Email here</label>
                             <textarea
@@ -152,5 +146,4 @@ const Contact: React.FC<Props> = ({ isVisible, volume }) => {
     );
 };
 
-// This line makes the component available to be imported in other files
 export default Contact;

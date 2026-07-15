@@ -1,19 +1,18 @@
 import React from 'react';
 
 interface ProjectCardProps {
-  imageUrl: any;
+  imageUrl: string;
   webPath: string;
   title: string;
   description: string;
   className?: string;
   name: string;
-  setTop: any;
+  setTop: (v: string) => void;
   id: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ imageUrl, webPath, title, description, className = '', name, setTop, id }) => {
   return (
-    // We add the dynamic className here for styling the card stack
     <div onMouseEnter={() => setTop(id)} onFocus={() => setTop(id)} className={` shadow-[3px_3px_8px_0px_var(--shadow)]
       w-60 bg-gradient-to-b from-[var(--card-1)] to-[var(--card-2)] border-2 border-[var(--border-color)] rounded-lg 
       flex flex-col overflow-hidden  
