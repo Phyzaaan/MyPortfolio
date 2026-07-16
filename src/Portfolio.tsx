@@ -131,7 +131,7 @@ const Portfolio: React.FC = () => {
 
 
         {/* Main content */}
-        <main className={`relative w-[80%] min-w-[350px] max-w-5xl h-[65vh] min-h-[350px] max-h-[900px] overflow-hidden flex flex-col backdrop-blur-sm border-3 border-[var(--border-color)] mx-auto ${paid ? 'rounded-2xl shadow-[2px_3px_5px_0_var(--shadow)]' : 'bg-white'} ${broken ? 'bg-[var(--primary-color)]' : ''}`}>
+        <main className={`relative w-[80%] min-w-[350px] max-w-5xl h-[65vh] min-h-[490px] max-h-[900px] overflow-hidden flex flex-col backdrop-blur-sm border-3 border-[var(--border-color)] mx-auto ${paid ? 'rounded-2xl shadow-[2px_3px_5px_0_var(--shadow)]' : 'bg-white'} ${broken ? 'bg-[var(--primary-color)]' : ''}`}>
           <Header
             title={headerTitle}
             paid={paid}

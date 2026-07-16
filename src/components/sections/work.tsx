@@ -1,95 +1,161 @@
 import React, { useState } from "react";
 
 import ProjectCard from "../ui/projectCards";
-import { playSound } from "../../utils/sound";
-import hoverSound from '/Sounds/hover.mp3'
 
 interface Props {
-    isVisible: boolean;
-    volume: boolean;
+  isVisible: boolean;
+  volume: boolean;
 }
 
-import musicPlayer from '/img/MusicPlayer.png';
-import elementalSynthLab from '/img/ElementalSynthLab.png';
-import FuriMusic from '/img/FuriMusic.png';
-
-
 const projects = [
-    {
-        imageUrl: musicPlayer, 
-        webPath: 'https://phyzaaan.github.io/Music-Player/',
-        title: 'Music Player',
-        description: 'A sleek music player with personal favroite playlist of songs.',
-        name: 'Music Player'
-    },
-    {
-        imageUrl: elementalSynthLab, 
-        webPath: 'https://phyzaaan.github.io/Elemental-Synthesis-Lab---Genshin-Impact-mini-game/',
-        title: 'Elemental Synth Lab',
-        description: 'An experimental synthesizer Genshin Impact mini-game.',
-        name: 'Elemental Synth Lab'
-    },
-    {
-        imageUrl: FuriMusic, 
-        webPath: 'https://furi-music.vercel.app/',
-        title: 'Furi Music',
-        description: 'This webapp is for MOBILES! Its still under construction.',
-        name: 'Furi Music'
-    }
+  {
+    imageUrl: "/img/Surprise.png",
+    webPath: "https://phyzaaan.github.io/Surprise/",
+    title: "Surprise",
+    description:
+      "A totally fun and amazing website which will definitely NOT rick roll you...",
+    name: "Surprise",
+  },
+  {
+    imageUrl: "/img/FoodieChecker.png",
+    webPath: "https://phyzaaan.github.io/Foodie-Checker/",
+    title: "Foodie Checker",
+    description:
+      "Prepare for the judgement of the Oratrice Machnique D'Analyse Cardinale!",
+    name: "Foodie Checker",
+  },
+  {
+    imageUrl: "/img/FuriMusic.png",
+    webPath: "https://furi-music.vercel.app/",
+    title: "Furi Music",
+    description: "Suggest me your favorite songs and DON'T touch furina.exe",
+    name: "Furi Music",
+  },
+  {
+    imageUrl: "/img/ElementalSynthLab.png",
+    webPath:
+      "https://phyzaaan.github.io/Elemental-Synthesis-Lab---Genshin-Impact-mini-game/",
+    title: "Elemental Synth Lab",
+    description: "Always use gloves and NEVER touch anything bare hands...",
+    name: "Elemental Synth Lab",
+  },
+  {
+    imageUrl: "/img/MusicPlayer.png",
+    webPath: "https://phyzaaan.github.io/Music-Player/",
+    title: "Music Player",
+    description:
+      "A local Music Player aka Music Plyer 1.0 or Old Music Player.",
+    name: "Music Player",
+  },
 ];
 
+const Work: React.FC<Props> = ({ isVisible }) => {
+  const [top, setTop] = useState(2);
+  const [scrolling, setScrolling] = useState(false);
+  const [startX, setStartX] = useState(0);
 
-const Work: React.FC<Props> = ({ isVisible, volume }) => {
-    const [topCard, setTopCard] = useState('p2');
+  const handleDragStart = (e: React.TouchEvent) => {
+    setScrolling(true);
+    setStartX(e.touches[0].clientX);
+  };
 
-    function handleSetTop(topCardid: string) {
-        if (topCardid !== topCard) {
-        playSound(hoverSound, { isEnabled: volume, volume: 1 })
-        setTopCard(topCardid);
-        }
+  const handleDrag = (e: React.TouchEvent) => {
+    if (!scrolling) return;
+
+    const currentX = e.touches[0].clientX;
+    const diff = startX - currentX;
+
+    if (diff >= 80) {
+      if (top < projects.length - 1) {
+        setTop((prev) => prev + 1);
+      }
+      setScrolling(false);
+    } else if (diff <= -80) {
+      if (top > 0) {
+        setTop((prev) => prev - 1);
+      }
+      setScrolling(false);
     }
+  };
 
-    return (
-        <section
-            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] overflow-hidden flex flex-col 
-            ${isVisible ? 'top-[60px]' : 'top-[1300px]'} transition-all duration-250`}
-        >
+  const handleDragEnd = () => {
+    setScrolling(false);
+  };
 
-            {/* --- WINDOW CONTENT --- */}
-            <div
-                className="p-4 flex-grow flex flex-col gap-y-3 h-full"
-            >
-                <div className="h-full w-full flex-shrink-0 snap-start p-5">
-                    <h2 className="text-3xl relative z-3 font-bold mix-blend-difference text-center ">
-                        Here are some of my websites
-                    </h2>
+  const handleWheel = (e: React.WheelEvent) => {
+    if (Math.abs(e.deltaY) < 5) return;
 
-                    {/* --- Project Card Stacking Container --- */}
-                    <div className="flex justify-center items-center pb-5 border-b-2 h-full ">
-                        <ProjectCard
-                            setTop={handleSetTop}
-                            id='p1'
-                            {...projects[0]}
-                            className={`-mr-24 ${topCard === 'p1' ? 'rotate-[0deg] scale-110 z-3 ' : 'rotate-[-8deg] scale-100 z-1'} transition-all duration-150`}
-                        />
-                        <ProjectCard
-                            setTop={handleSetTop}
-                            id='p2'
-                            {...projects[1]}
-                            className={`${topCard === 'p2' ? 'scale-110 z-3 ' : 'scale-100 z-2'} transition-all duration-150`}
-                        />
-                        <ProjectCard
-                            setTop={handleSetTop}
-                            id='p3'
-                            {...projects[2]}
+    setTop((prev) => {
+      if (e.deltaY > 0) return Math.min(prev + 1, projects.length - 1);
 
-                            className={`-ml-24 ${topCard === 'p3' ? 'rotate-[0deg] scale-110 z-3 ' : 'rotate-[8deg] scale-100 z-1'} transition-all duration-150`}
-                        />
-                    </div>
-                </div>
-            </div>
-        </section >
-    );
+      return Math.max(prev - 1, 0);
+    });
+  };
+
+  return (
+    <section
+      className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] flex flex-col 
+            ${isVisible ? "top-[60px]" : "top-[1300px]"} transition-all duration-250`}
+    >
+      {/* --- WINDOW CONTENT --- */}
+      <div className="flex-grow flex flex-col gap-2">
+        <div className="h-full w-full flex-shrink-0 snap-start p-5">
+          <h2 className="text-3xl relative z-3 font-bold mix-blend-difference text-center ">
+            Here are some of my websites
+          </h2>
+
+          {/* --- Project Card Stacking Container --- */}
+          <div
+            onTouchStart={handleDragStart}
+            onTouchMove={handleDrag}
+            onTouchEnd={handleDragEnd}
+            onWheel={handleWheel}
+            className="relative h-full w-full flex items-center justify-center  z-10 flex-col"
+          >
+            {projects.map((project, idx) => {
+              const offset = idx - top;
+              const abs = Math.abs(offset);
+
+              const x = offset * 180;
+              const y = offset === 0 ? -28 : abs * 14;
+              const rotate = offset * 5;
+              const rotateY = offset * -10;
+              const scale = abs === 0 ? 1.08 : Math.max(1 - abs * 0.12, 0.72);
+              const brightness = Math.max(1 - abs * 0.15, 0.55);
+              const opacity = Math.max(1 - abs * 0.2, 0);
+
+              return (
+                <ProjectCard
+                  key={idx}
+                  id={idx}
+                  setTop={setTop}
+                  {...project}
+                  className="absolute transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]"
+                  style={{
+                    transform: `
+                        translateX(${x}px)
+                        translateY(${y}px)
+                        perspective(1000px)
+                        rotateY(${rotateY}deg)
+                        rotate(${rotate}deg)
+                        scale(${scale})
+                    `,
+                    boxShadow:
+                      abs === 0
+                        ? "0 0 30px rgba(120,220,255,.45)"
+                        : "0 6px 18px rgba(0,0,0,.35)",
+                    filter: `brightness(${brightness})`,
+                    opacity,
+                    zIndex: 100 - abs,
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Work;
