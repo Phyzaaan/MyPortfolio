@@ -32,6 +32,14 @@ const projects = [
     name: "Furi Music",
   },
   {
+    imageUrl: "/img/RateMyExcuse.png",
+    webPath: "https://excuse-court.vercel.app/",
+    title: "Rate My Excuse",
+    description:
+      "The most fun game where you will NOT get rosted by The Goofy!",
+    name: "Rate My Excuse",
+  },
+  {
     imageUrl: "/img/ElementalSynthLab.png",
     webPath:
       "https://phyzaaan.github.io/Elemental-Synthesis-Lab---Genshin-Impact-mini-game/",
@@ -44,7 +52,7 @@ const projects = [
     webPath: "https://phyzaaan.github.io/Music-Player/",
     title: "Music Player",
     description:
-      "A local Music Player aka Music Plyer 1.0 or Old Music Player.",
+      "A local Music Player aka Music Plyer 1.0 or Old Music Player. Whatever you want to call it.",
     name: "Music Player",
   },
 ];
