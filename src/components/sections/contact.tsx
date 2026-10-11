@@ -1,149 +1,93 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { playSound } from "../../utils/sound";
-import btnPressSound from '/Sounds/btn-press.mp3'
-import paidSound from '/Sounds/paid.mp3'
-
-import emailjs from '@emailjs/browser';
-import Alert from '../ui/Alert'
+import btnPressSound from "/Sounds/btn-press.mp3";
+import Alert from "../ui/Alert";
+import { MdEmail } from "react-icons/md";
 
 interface Props {
-    isVisible: boolean;
-    volume: boolean;
+  isVisible: boolean;
+  volume: boolean;
 }
 
+const EMAIL = "phyzaaan@gmail.com";
+const MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent("Hello from your portfolio")}`;
+
 const Contact: React.FC<Props> = ({ isVisible, volume }) => {
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("");
 
-    const [showAlert, setShowAlert] = useState(false);
-    const [alertMsg, setAlertMsg] = useState("");
+  const handleOpenMail = () => {
+    playSound(btnPressSound, { isEnabled: volume });
+    // The <a href="mailto:..."> handles opening the default email app.
+  };
 
-    const formRef = useRef<HTMLFormElement>(null);
-    const [isSending, setIsSending] = useState(false);
+  // Fallback for devices that have no default mail app configured
+  const handleCopy = async () => {
+    playSound(btnPressSound, { isEnabled: volume });
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setAlertMsg("Email address copied!");
+    } catch {
+      setAlertMsg(`Couldn't copy. My email is ${EMAIL}`);
+    }
+    setShowAlert(true);
+  };
 
-    const [formData, setFormData] = useState({
-        email: '',
-        subject: '',
-        message: ''
-    });
+  return (
+    <section
+      className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] flex flex-col 
+            ${isVisible ? "top-[60px]" : "top-[1300px]"} transition-all duration-250`}
+    >
+      {/* --- WINDOW CONTENT (fills the whole section) --- */}
+      <div className="h-full w-full p-5 flex-grow flex flex-col items-center gap-y-6 text-center overflow-y-auto">
+        <div className="flex flex-col items-center">
+          <MdEmail className="h-24 w-24" />
+          <h2 className="text-4xl sm:text-6xl font-bold text-[var(--text-color)]">
+            Send me mail
+          </h2>
+        </div>
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({ ...prevState, [name]: value }));
-    };
+        <p className="text-sm text-[var(--text-color)]/70">
+          Click the button to write me an email in your default mail app.
+        </p>
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (!formRef.current) return;
+        {/* --- Email address display --- */}
+        <div className="w-full max-w-94  bg-[var(--input-color)] p-4 rounded-lg border-2 border-[var(--border-color)] text-[var(--text-color)] font-bold break-all select-all">
+          {EMAIL}
+        </div>
 
-        setIsSending(true);
-        playSound(btnPressSound, { isEnabled: volume })
-
-        emailjs.sendForm(
-            'service_wkogxik',  // Service ID
-            'template_8izhf0d', // Template ID
-            formRef.current,
-            '-AnaJnpfbDeUYlG_v'   // Public Key
-        ).then(() => {
-            playSound(paidSound, { isEnabled: volume });
-            setAlertMsg("Email sent successfully!");
-            setShowAlert(true);
-            formRef.current?.reset();
-            setFormData({ email: '', subject: '', message: '' }); 
-        })
-            .catch((error) => {
-                setAlertMsg(`Failed... ${error.text}`);
-                setShowAlert(true);
-                setIsSending(false);
-            });
-    };
-
-
-
-
-
-    return (
-        <section
-            className={`absolute inset-0 z-30 bg-[var(--primary-color)] w-full h-[89%] flex flex-col 
-            ${isVisible ? 'top-[60px]' : 'top-[1300px]'} transition-all duration-250`}
+        {/* --- Open mail app button --- */}
+        <a
+          href={MAILTO}
+          onClick={handleOpenMail}
+          className="w-full max-w-94 block bg-[var(--btn-color)] text-[var(--text-color)] font-bold py-4 rounded-lg border-2 border-[var(--border-color)]
+                       shadow-[0_5px_0px_var(--shadow)] hover:bg-white/20
+                       active:translate-y-1 active:shadow-[0_2px_0px_#4338ca]
+                       focus:outline-none focus:ring-2 focus:ring-[#00eaff]
+                       transition-transform duration-100"
         >
+          Open email app
+        </a>
 
-            {/* --- WINDOW CONTENT --- */}
-            <div className="h-full w-full flex-shrink-0 snap-start p-5 mt-10 flex-grow flex flex-col gap-y-3 overflow-y-auto ">
-                {/* Inner form container */}
-                <form
-                    ref={formRef}
-                    onSubmit={handleSubmit}
-                    className="w-full flex flex-col sm:flex-row gap-6 border-2 border-[var(--border-color)] rounded-lg p-6 "
-                >
-                    {/* Left Column */}
-                    <div className="flex flex-col gap-y-4 w-full sm:w-1/3 ">
-                        <h2 className="text-2xl font-bold text-[var(--text-color)] text-center ">Send me mail</h2>
-                        {/* --- Email Input --- */}
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 " id="email-label">Email</label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                                className="w-full bg-[var(--input-color)] p-2 rounded-lg border-2 border-[var(--border-color)] focus:outline-none focus:ring-2 focus:ring-[#00eaff] "
-                            />
-                        </div>
+        {/* --- Copy fallback --- */}
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="text-sm font-bold text-[var(--text-color)]/70 underline underline-offset-4 hover:text-[var(--text-color)]
+                       focus:outline-none focus:ring-2 focus:ring-[#00eaff] rounded"
+        >
+          No mail app? Copy my address
+        </button>
+      </div>
 
-                        {/* --- Subject Input --- */}
-                        <div className="">
-                            <label htmlFor="subject" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 ">Subject</label>
-                            <input
-                                id="subject"
-                                name="subject"
-                                type="text"
-                                value={formData.subject}
-                                onChange={handleChange}
-                                required
-                                className="w-full p-2 rounded-lg bg-[var(--input-color)] border-2 border-[var(--border-color)] focus:outline-none focus:ring-2 focus:ring-[#00eaff] "
-                            />
-                        </div>
-
-                        {/* --- Submit Button --- */}
-                        <button
-                            disabled={isSending}
-                            type="submit"
-                            className="w-full bg-[var(--btn-color)] text-[var(--text-color)] font-bold py-3 rounded-lg border-2 border-[var(--border-color)]
-                           shadow-[0_5px_0px_var(--shadow)] hover:bg-white/20
-                           active:translate-y-1 active:shadow-[0_2px_0px_#4338ca]
-                           transition-transform duration-100 
-                           "
-                        >
-                            <span className="">Send</span>
-                        </button>
-                    </div>
-
-                    {/* Right Column */}
-                    <div className="w-full sm:w-2/3 h-[250px] sm:h-full ">
-                        {/* --- Message Textarea --- */}
-                        <div className="w-full h-full flex flex-col">
-                            <label htmlFor="message" className="block text-sm font-bold text-[var(--text-color)]/70 mb-1 ">Enter your Email here</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                required
-                                className="w-full h-full p-2 bg-[var(--input-color)] rounded-lg border-2 border-[var(--border-color)] resize-none focus:outline-none focus:ring-2 focus:ring-[#00eaff] "
-                            />
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <Alert
-                isVisible={showAlert}
-                message={alertMsg}
-                onClose={() => setShowAlert(false)}
-                volume={volume}
-            />
-        </section>
-    );
+      <Alert
+        isVisible={showAlert}
+        message={alertMsg}
+        onClose={() => setShowAlert(false)}
+        volume={volume}
+      />
+    </section>
+  );
 };
 
 export default Contact;
